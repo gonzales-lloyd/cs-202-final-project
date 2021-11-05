@@ -1,27 +1,26 @@
-
-
-
 # CS 202 Semester Project, F21
 The semester project is a group project. It counts for four programming assignments. As noted below, if a group successfully completes the challenge level, a grade of 120% is possible.
 
 ## Contents
-- [[#Overview|Overview]]
-- [[#Project Levels|Project Levels]]
-- [[#Project Description|Project Description]]
-	- [[#Background|Background]]
-		- [[#Sample Rates|Sample Rates]]
-		- [[#Quantization (bit depth)|Quantization (bit depth)]]
-		- [[#File Formats and Compression|File Formats and Compression]]
-- [[#Basic Level Requirements|Basic Level Requirements]]
-	- [[#Program Flow|Program Flow]]
-	- [[#Required Processors|Required Processors]]
-- [[#Challenge Level Requirements|Challenge Level Requirements]]
-	- [[#Program Flow|Program Flow]]
-	- [[#Required Processors|Required Processors]]
-- [[#Architectural Requirements (Basic and Challenge)|Architectural Requirements (Basic and Challenge)]]
-	- [[#Documentation|Documentation]]
-- [[#Grading|Grading]]
-- [[#What to Turn In|What to Turn In]]
+- [CS 202 Semester Project, F21](#cs-202-semester-project-f21)
+  - [Contents](#contents)
+  - [Overview](#overview)
+  - [Project Levels](#project-levels)
+  - [Project Description](#project-description)
+    - [Background](#background)
+      - [Sample Rates](#sample-rates)
+      - [Quantization (bit depth)](#quantization-bit-depth)
+      - [File Formats and Compression](#file-formats-and-compression)
+  - [Basic Level Requirements](#basic-level-requirements)
+    - [Program Flow](#program-flow)
+    - [Required Processors](#required-processors)
+  - [Challenge Level Requirements](#challenge-level-requirements)
+    - [Program Flow](#program-flow-1)
+    - [Required Processors](#required-processors-1)
+  - [Architectural Requirements (Basic and Challenge)](#architectural-requirements-basic-and-challenge)
+    - [Documentation](#documentation)
+  - [Grading](#grading)
+  - [What to Turn In](#what-to-turn-in)
 
 ## Overview
 This project is designed to provide experience in
