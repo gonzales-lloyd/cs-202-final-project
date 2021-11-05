@@ -81,19 +81,13 @@ Else
 ```  
 
 **Start Menu**
-
 The base start should allow the user to enter the name of a wav file or exit the application.
 
 **File Metadata**
-
 The data to be displayed in step (1):
-
 -   filename
-    
 -   sample rate
-    
 -   bits per sample
-    
 -   stereo or mono
     
 
@@ -147,16 +141,11 @@ The Doxygen files should be generated into a folder called _docs._
 This project will be graded using standard grading with partial credit. There will not be an opportunity for redo, as this project is due toward the end of the semester and there will not be time for redo and grading.
 
 Grading will be based on
-
 -   use of Git
-    
 -   correct use of C++ features such as templates, inheritance, interfaces, exceptions, and composition
-    
 -   correctness of the implementation of the required processes
-    
 -   runtime stability
     
-
 See the rubric for details.
 
 ## What to Turn In
