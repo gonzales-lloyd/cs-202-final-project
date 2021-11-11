@@ -1,13 +1,35 @@
-all: wav_manager
+#Made with help from the following Stack Overflow links:
+#https://stackoverflow.com/questions/11394659/where-does-the-value-of-cxx-in-a-makefile-come-from/11394799
+#https://stackoverflow.com/questions/30573481/how-to-write-a-makefile-with-separate-source-and-header-directories
+# - Lloyd Gonzales
 
-wav_manager: driver.o wav.o 
-	g++ -o wav_manager driver.o wav.o
+SRC_DIR := src
+OBJ_DIR := obj
+BIN_DIR := .
 
-driver.o: driver.cpp wav.o
-	g++ -c driver.cpp
+EXE := $(BIN_DIR)/wav_manager
+SRC := $(wildcard $(SRC_DIR)/*.cpp)
+OBJ := $(SRC:$(SRC_DIR)/%.cpp=$(OBJ_DIR)/%.o)
 
-wav.o: wav.cpp wav.h wavheader.h
-	g++ -c wav.cpp
+CXXFLAGS := -Iinclude -MMD -MP
+CFLAGS   := -Wall
+LDFLAGS  := -Llib
+LDLIBS   := -lm
+
+.PHONY: all clean
+
+all: $(EXE)
+
+$(EXE): $(OBJ) | $(BIN_DIR)
+	$(CXX) $(LDFLAGS) $^ $(LDLIBS) -o $@
+
+$(OBJ_DIR)/%.o: $(SRC_DIR)/%.cpp | $(OBJ_DIR)
+	$(CXX) $(CXXFLAGS) $(CFLAGS) -c $< -o $@
+
+$(BIN_DIR) $(OBJ_DIR):
+	mkdir -p $@
 
 clean:
-	rm *.o wav_manager
+	@$(RM) -rv $(BIN_DIR) $(OBJ_DIR)
+
+-include $(OBJ:.o=.d)
