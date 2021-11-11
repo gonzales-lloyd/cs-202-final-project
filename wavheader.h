@@ -1,5 +1,9 @@
 //Adapted from Dr. Lancaster's video and the WAV format link provided
 //int = 4 bytes, short = 2, char used where applicable
+
+//include guard, just in case
+#ifndef wavheader_h
+#define wavheader_h
 typedef struct wav_header {
     //riff chunk descriptor
     char chunk_id[4]; //contains "RIFF"
@@ -18,6 +22,7 @@ typedef struct wav_header {
 
     //data subchunk
     char data_header[4]; //should contain "data"
-    int data_bytes; //number of bytes in data, equal to sample count * channels * sample byte size
+    int buffer_size; //number of bytes in data, equal to sample count * channels * sample byte size
 
 } wav_header;
+#endif
