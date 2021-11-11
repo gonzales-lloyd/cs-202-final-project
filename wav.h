@@ -4,7 +4,7 @@
 #include "wavheader.h"
 
 class Wav{
-private:
+public:
     wav_header header;
     unsigned char* buffer; //i.e. the sound data after the header
 public:
