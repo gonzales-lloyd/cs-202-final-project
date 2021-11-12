@@ -3,6 +3,8 @@
 #https://stackoverflow.com/questions/30573481/how-to-write-a-makefile-with-separate-source-and-header-directories
 # - Lloyd Gonzales
 
+#use `make obj/*.o` for intermediate object files
+
 SRC_DIR := src
 OBJ_DIR := obj
 BIN_DIR := .
