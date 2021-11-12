@@ -1,9 +1,18 @@
-//Adapted from Dr. Lancaster's video and the WAV format link provided
+/**
+ * @file wav.h
+ * @brief Header file for the wav_header struct.
+ * 
+ * Adapted from Dr. Lancaster's video and the WAV format link provided.
+ */
+
 //int = 4 bytes, short = 2, char used where applicable
 
 //include guard, just in case
 #ifndef wavheader_h
 #define wavheader_h
+/**
+ * Struct containing data for all parts of the WAV header.
+ */
 typedef struct wav_header {
     //riff chunk descriptor
     char chunk_id[4]; //contains "RIFF"
