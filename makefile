@@ -1,6 +1,6 @@
 #Made with help from the following Stack Overflow links:
-#https://stackoverflow.com/questions/11394659/where-does-the-value-of-cxx-in-a-makefile-come-from/11394799
-#https://stackoverflow.com/questions/30573481/how-to-write-a-makefile-with-separate-source-and-header-directories
+#https://stackoverflow.com/questions/11394659/where-does-the-value-of-cxx-in-a-makefile-come-from/11394799 - helped fix $(CPPFLAGS) vs $(CXXFLAGS)
+#https://stackoverflow.com/questions/30573481/how-to-write-a-makefile-with-separate-source-and-header-directories - go here for explanation
 # - Lloyd Gonzales
 
 #use `make obj/*.o` for intermediate object files
