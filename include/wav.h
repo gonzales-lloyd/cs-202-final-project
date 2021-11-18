@@ -8,13 +8,16 @@
 #include <string>
 #include "wavheader.h"
 
+#ifndef WAV_CLASS
+#define WAV_CLASS
 /**
  * Class for representing and performing file I/O on a WAV file.
  */
 class Wav{
 public: //change to private as necessary
     wav_header header;
-    unsigned char* buffer; //i.e. the sound data after the header
+    unsigned short* buffer; //i.e. the sound data after the header
+    //maybe worth considering a template for buffers of various sizes? (8,16, 32 etc)
 public:
     /**
      * Read the WAV file at a certain path, loading data into this class.
@@ -35,9 +38,10 @@ public:
     /**
      * Return the buffer.
      */
-    unsigned char* getBuffer();
+    unsigned short* getBuffer();
     /**
      * Class destructor.
      */
     ~Wav();
 };
+#endif
