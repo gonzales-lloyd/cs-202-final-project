@@ -18,7 +18,7 @@ void Wav::readFile(const std::string &fileName){
     std::ifstream wav_file(fileName, std::ios::binary | std::ios::in);
     if(wav_file.is_open()){
         wav_file.read((char*)&header, sizeof(wav_header)); //read into `header` by reading a number of bytes equivalent to the size of the struct
-        buffer = new unsigned char[header.buffer_size]; //allocate memory for the buffer
+        buffer = new unsigned short[header.buffer_size]; //allocate memory for the buffer
         wav_file.read((char*)buffer, header.buffer_size); //read remainder of file equal to buffer size into buffer
         wav_file.close();
     }
@@ -43,7 +43,7 @@ void Wav::writeFile(const std::string &fileName){
  * 
  * @return The buffer.
  */
-unsigned char* Wav::getBuffer(){
+unsigned short* Wav::getBuffer(){
     return buffer;
 }
 
