@@ -18,7 +18,7 @@ void Wav::readFile(const std::string &fileName){
     std::ifstream wav_file(fileName, std::ios::binary | std::ios::in);
     if(wav_file.is_open()){
         wav_file.read((char*)&header, sizeof(wav_header)); //read into `header` by reading a number of bytes equivalent to the size of the struct
-        buffer = new unsigned short[header.buffer_size]; //allocate memory for the buffer
+        buffer = new signed short[header.buffer_size]; //allocate memory for the buffer
         wav_file.read((char*)buffer, header.buffer_size); //read remainder of file equal to buffer size into buffer
         wav_file.close();
     }
@@ -38,12 +38,35 @@ void Wav::writeFile(const std::string &fileName){
     wav_file.close();
 }
 
+std::string Wav::getHeaderData() const{
+    std::stringstream result;
+
+    result << "\n" << "=====RIFF DESCRIPTOR====="
+           << "\n" << "Chunk ID: " << header.chunk_id[0] << header.chunk_id[1] << header.chunk_id[2] << header.chunk_id[3]
+           << "\n" << "Size of file excluding first 8 bytes: " << header.wav_size
+           << "\n" << "Format: " << header.format[0] << header.format[1] << header.format[2] << header.format[3]
+           << "\n" << "=====SUBCHUNK 1====="
+           << "\n" << "Subchunk 1 header: " << header.fmt_header[0] << header.fmt_header[1] << header.fmt_header[2] << header.fmt_header[3]
+           << "\n" << "Subchunk 1 size: " << header.fmt_chunk_size
+           << "\n" << "Audio format (1 is linear PCM): " << header. audio_format
+           << "\n" << "Number of audio channels: " << header.num_channels
+           << "\n" << "Sample rate: " << header.sample_rate
+           << "\n" << "Byte rate: " << header.byte_rate
+           << "\n" << "Sample size*channel count (bytes): " << header.sample_alignment
+           << "\n" << "Bits per sample: " << header.bits_per_sample
+           << "\n" << "=====SUBCHUNK 2====="
+           << "\n" << "Subchunk 2 header: " << header.data_header[0] << header.data_header[1] << header.data_header[2] << header.data_header[3]
+           << "\n" << "Buffer size: " << header.buffer_size;
+
+    return result.str();
+}
+
 /**
  * Get the full contents of the buffer (i.e. audio data).
  * 
  * @return The buffer.
  */
-unsigned short* Wav::getBuffer(){
+signed short* Wav::getBuffer(){
     return buffer;
 }
 
