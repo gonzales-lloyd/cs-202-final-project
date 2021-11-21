@@ -18,14 +18,23 @@ class Wav{
 public: //change to private as necessary
     wav_header header;
     signed short* buffer; //i.e. the sound data after the header
+    std::string fileName;
     //maybe worth considering a template for buffers of various sizes? (8,16, 32 etc)
     //isValid() (check for standard wav structure, reject otherwise)
 public:
     /**
-     * Print the full metadata contained in the WAV header.
+     * Get the full metadata contained in the WAV header, returning a formatted string.
      * Does NOT fit assignment requirements, and is provided for debug.
+     * 
+     * @return A formatted string containing WAV header data.
      */
     std::string getHeaderData() const;
+    /**
+     * Get the metadata of the WAV file required by the assignment.
+     * 
+     * @return A formatted string containing the WAV metadata from the assignment.
+     */
+    std::string getMetaData() const;
     /**
      * Read the WAV file at a certain path, loading data into this class.
      * 

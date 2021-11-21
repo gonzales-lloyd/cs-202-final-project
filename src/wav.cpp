@@ -9,7 +9,7 @@
 
 /**
  * Read the input file and store WAV information to `header` and `buffer`.
- * 
+ * THIS SHOULD BE THE CONSTRUCTOR SO THE WAV HEADER CAN'T BE READ BEFOREHAND
  * No error-checking or error output is currently provided.
  * 
  * @param fileName The input file path.
@@ -17,6 +17,8 @@
 void Wav::readFile(const std::string &fileName){
     std::ifstream wav_file(fileName, std::ios::binary | std::ios::in);
     if(wav_file.is_open()){
+        this->fileName = fileName;
+
         wav_file.read((char*)&header, sizeof(wav_header)); //read into `header` by reading a number of bytes equivalent to the size of the struct
         buffer = new signed short[header.buffer_size]; //allocate memory for the buffer
         wav_file.read((char*)buffer, header.buffer_size); //read remainder of file equal to buffer size into buffer
@@ -58,6 +60,27 @@ std::string Wav::getHeaderData() const{
            << "\n" << "Subchunk 2 header: " << header.data_header[0] << header.data_header[1] << header.data_header[2] << header.data_header[3]
            << "\n" << "Buffer size: " << header.buffer_size;
 
+    return result.str();
+}
+
+std::string Wav::getMetaData() const{
+    std::stringstream result;
+
+    std::string channel_output;
+    if(header.num_channels==1){
+        channel_output = "1 (Mono)";
+    }else if(header.num_channels==2){
+        channel_output = "2 (Stereo)";
+    }else{
+        channel_output = std::to_string(header.num_channels);
+        channel_output.append(" (Unknown)");
+    }
+
+    result << "Filename: " << fileName
+           << "\n" << "Sample rate: " << header.sample_rate << " hz"
+           << "\n" << "Bits per sample: " << header.bits_per_sample 
+           << "\n" << "Channels: " << channel_output;
+    
     return result.str();
 }
 
