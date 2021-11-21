@@ -11,7 +11,14 @@
  * Main function.
  */
 int main (int argc, char *argv[]){
-    std::string path = "test_files/CantinaBand3.wav";
+    std::string path;
+    if(argc != 2){
+        std::cerr << "./wav_manager <wav filepath>" << std::endl;
+        return 1;
+    }else{
+        path = argv[1];
+    }
+    
     Wav wav_obj;
     wav_obj.readFile(path);
     std::cout << std::hex << std::setfill('0') << std::setw(2) << wav_obj.buffer[0] << std::endl;
