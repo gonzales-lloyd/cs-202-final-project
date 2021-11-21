@@ -1,6 +1,7 @@
 # Project-specific
 wav_manager
 /.vscode
+out.wav
 
 # Prerequisites
 *.d
