@@ -17,7 +17,7 @@
 class Wav{
 public: //change to private as necessary
     wav_header header;
-    signed short* buffer; //i.e. the sound data after the header
+    signed int* buffer; //i.e. the sound data after the header
     std::string fileName;
     //maybe worth considering a template for buffers of various sizes? (8,16, 32 etc)
     //isValid() (check for standard wav structure, reject otherwise)
@@ -54,7 +54,7 @@ public:
     /**
      * Return the buffer.
      */
-    signed short* getBuffer();
+    signed int* getBuffer();
     /**
      * Class destructor.
      */
