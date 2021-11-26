@@ -16,7 +16,12 @@ HEADERS += \
     mainwindow.h
 
 FORMS += \
-    mainwindow.ui
+    compression.ui \
+    echo.ui \
+    gain.ui \
+    lowpass.ui \
+    mainwindow.ui \
+    normalization.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
