@@ -32,6 +32,6 @@ $(BIN_DIR) $(OBJ_DIR):
 	mkdir -p $@
 
 clean:
-	@$(RM) -rv $(OBJ_DIR)
+	@$(RM) -rv $(OBJ_DIR) wav_manager
 
 -include $(OBJ:.o=.d)
