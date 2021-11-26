@@ -7,6 +7,7 @@
 #include <iostream>
 #include <string>
 #include <sstream>
+#include <vector>
 #include "wavheader.h"
 
 #ifndef WAV_CLASS
@@ -19,6 +20,7 @@ public: //change to private as necessary
     wav_header header;
     unsigned char* buffer; //i.e. the sound data after the header
     std::string fileName;
+    std::vector<std::vector<double>> audioData;
     //maybe worth considering a template for buffers of various sizes? (8,16, 32 etc)
     //isValid() (check for standard wav structure, reject otherwise)
 public:
@@ -35,6 +37,10 @@ public:
      * @return A formatted string containing the WAV metadata from the assignment.
      */
     std::string getMetaData() const;
+    /**
+     * Loads all audio data into the audioData buffer as doubles.
+     */
+    void loadAudioData();
     /**
      * Read the WAV file at a certain path, loading data into this class.
      * 

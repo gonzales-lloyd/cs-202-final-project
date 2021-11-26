@@ -89,18 +89,23 @@ int main (int argc, char *argv[]){
     wav_obj.writeFile("out.wav");
     */
     
-    AudioFile<float> a;
+    AudioFile<double> a;
     bool loadedOK = a.load(path);
 
     /* If you hit this assert then the file path above
      probably doesn't refer to a valid audio file */
     assert (loadedOK);
 
+    Wav wav_obj;
+    wav_obj.readFile(path);
+
     for (int i = 0; i < a.getNumSamplesPerChannel(); i++){
         for (int channel = 0; channel < a.getNumChannels(); channel++){
-            std::cout << a.samples[channel][i] << std::endl;
+            std::cout << a.samples[channel][i] << " " << wav_obj.audioData[channel][i] << std::endl;
         }
     }
+
+    a.save("out.wav");
     
     return 0;
 } 
