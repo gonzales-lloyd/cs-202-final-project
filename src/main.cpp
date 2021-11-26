@@ -101,11 +101,13 @@ int main (int argc, char *argv[]){
 
     for (int i = 0; i < a.getNumSamplesPerChannel(); i++){
         for (int channel = 0; channel < a.getNumChannels(); channel++){
-            std::cout << a.samples[channel][i] << " " << wav_obj.audioData[channel][i] << std::endl;
+            wav_obj.audioData[channel][i] *= 0.1;
         }
     }
 
-    a.save("out.wav");
+    wav_obj.rewriteBuffer();
+    wav_obj.writeFile("out.wav");
+    //a.save("out.wav");
     
     return 0;
 } 

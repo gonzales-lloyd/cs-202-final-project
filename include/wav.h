@@ -42,6 +42,17 @@ public:
      */
     void loadAudioData();
     /**
+     * Rewrites the buffer using the current contents of audioData.
+     */
+    void rewriteBuffer();
+    /**
+     * Return value, or the maximum bounds passed in if value exceeds them.
+     * 
+     * Manual implementation of std::clamp from C++17.
+     */
+    template <typename T>
+    T clamp (T value, T minValue, T maxValue);
+    /**
      * Read the WAV file at a certain path, loading data into this class.
      * 
      * @param fileName The file's path.

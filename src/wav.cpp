@@ -135,6 +135,43 @@ void Wav::loadAudioData(){
     }
 }
 
+void Wav::rewriteBuffer(){
+    //iterate over sample, then channel
+    int numSamples = header.buffer_size / (header.num_channels * header.bits_per_sample / 8); 
+    for(int i=0; i<numSamples; i++){
+        for(int channel=0; channel<header.num_channels; channel++){
+            //if the sample was sent beyond the maximum bounds, then bring it back
+            double sample = clamp(audioData[channel][i], -1.0, 1.0);
+            if(header.bits_per_sample == 8){
+                //undo our signed assumption from earlier
+                sample = (sample + 1.0) / 2.0;
+                //and turn it back into an unsigned char
+                unsigned char sampleAsInt = (unsigned char)(sample*255.0);
+                //rewrite 1:1 back into buffer
+                buffer[(i*header.num_channels)+channel] = sampleAsInt;
+            }else if(header.bits_per_sample == 16){
+                //undo the signed short to double conversion from earlier
+                signed int sampleAsInt = (signed int)(sample*32767.0);
+                //determine where this should be in the buffer
+                int bufferStartIndex = (i*header.num_channels*2)+channel*2;
+                //split the int back into two unsigned chars by undoing the previous method
+                //bring the least significant byte back into the right-most bits and 
+                buffer[bufferStartIndex] = sampleAsInt & 0xFF;
+                buffer[bufferStartIndex+1] = (sampleAsInt >> 8) & 0xFF;
+            }else{
+                throw std::logic_error("Attempted to decode non 8/16-bit buffer");
+            }
+        }            
+    }
+}
+
+template <typename T>
+T Wav::clamp(T value, T minvalue, T maxValue){
+    value = std::min(value, maxValue);
+    value = std::max(value, minvalue);
+    return value;
+}
+
 std::string Wav::getHeaderData() const{
     std::stringstream result;
 
