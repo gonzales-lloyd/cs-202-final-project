@@ -16,6 +16,7 @@
  * 3. Validate the header data
  * 4. Once done, read through the number of bytes specified in the header
  *    and convert everything to a double
+ */
 
 /**
  * Read the input file and store WAV information to `header` and `buffer`.
@@ -30,7 +31,7 @@ void Wav::readFile(const std::string &fileName){
         this->fileName = fileName;
 
         wav_file.read((char*)&header, sizeof(wav_header)); //read into `header` by reading a number of bytes equivalent to the size of the struct
-        buffer = new signed int[header.buffer_size]; //allocate memory for the buffer
+        buffer = new unsigned char[header.buffer_size]; //allocate memory for the buffer
         wav_file.read((char*)buffer, header.buffer_size); //read remainder of file equal to buffer size into buffer
         wav_file.close();
     }
@@ -99,7 +100,7 @@ std::string Wav::getMetaData() const{
  * 
  * @return The buffer.
  */
-signed int* Wav::getBuffer(){
+unsigned char* Wav::getBuffer(){
     return buffer;
 }
 
