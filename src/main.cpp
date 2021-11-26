@@ -12,11 +12,11 @@
 /**
  * Program logic console.
  */
-void consoleLoop(){
+int consoleLoop(){
     std::cout << "CS 202 Final Project"
-              << "Group 33: Austin Zube, Grant Pellegrini, Lloyd Gonzales"
-              << "WAV manipulation program"
-              << "============================================"
+              << "\n" << "Group 33: Austin Zube, Grant Pellegrini, Lloyd Gonzales"
+              << "\n" << "WAV manipulation program"
+              << "\n" << "============================================"
               << std::endl;
     while(true){
         std::string filepath;
@@ -25,10 +25,20 @@ void consoleLoop(){
         if(filepath == "q"){
             break;
         }else{
-            //try load file
-            //if fail, print error message and `continue`
-            //else:
-            //show metadata
+            Wav wav_obj;
+            try{
+                wav_obj.readFile(filepath);
+            }catch(const std::runtime_error &e){
+                std::cout << e.what() << std::endl;
+                std::cout << "Please try again." << std::endl;
+                continue;
+            }
+            std::cout << "Load successful."
+                      << "\n" << "============================================" 
+                      << std::endl;
+            std::cout << wav_obj.getMetaData()
+                      << "\n" << "============================================" 
+                      << std::endl;
             std::string userInput;
             std::cout << "Select option:"
                       << "\n" << "==Processors=="
@@ -42,6 +52,7 @@ void consoleLoop(){
                       << "\n" << "q - Quit program" 
                       << std::endl;
             //a switch block would have been preferable
+            std::cin >> userInput;
             if(userInput == "q"){
                 break;
             }else if(userInput == "r"){
@@ -60,17 +71,28 @@ void consoleLoop(){
                 std::cout << "Invalid option - returning to main menu." << std::endl;
                 continue;
             }
-            //request file savepath
-            //save file
-            //implicit or explicit `continue`
+            std::cout << "Please enter the save location:" << std::endl;
+            std::string newpath;
+            std::cin >> newpath;
+            try{
+                wav_obj.rewriteBuffer();
+                wav_obj.writeFile(newpath);
+            }catch(const std::runtime_error &e){
+                std::cout << e.what() << std::endl;
+                std::cout << "Please try again." << std::endl;
+                continue;
+            }
         }
     }
+    return 0;
 }
 
 /**
  * Main function.
  */
 int main (int argc, char *argv[]){
+    return consoleLoop();
+
     std::string path;
     if(argc != 2){
         std::cerr << "./wav_manager <wav filepath>" << std::endl;
