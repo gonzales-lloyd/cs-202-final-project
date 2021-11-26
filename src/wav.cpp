@@ -48,9 +48,13 @@ void Wav::readFile(const std::string &fileName){
  */
 void Wav::writeFile(const std::string &fileName){
     std::ofstream wav_file(fileName, std::ios::binary | std::ios::out);
-    wav_file.write((char*)&header, sizeof(wav_header));
-    wav_file.write((char*)buffer, header.buffer_size);
-    wav_file.close();
+    if(wav_file.is_open()){
+        wav_file.write((char*)&header, sizeof(wav_header));
+        wav_file.write((char*)buffer, header.buffer_size);
+        wav_file.close();
+    }else{
+        throw std::runtime_error("Couldn't open file");
+    }
 }
 
 void Wav::loadAudioData(){
