@@ -18,9 +18,10 @@
 class Wav{
 public: //change to private as necessary
     wav_header header;
-    unsigned char* buffer; //i.e. the sound data after the header
+    unsigned char* buffer; //i.e. the sound data after the header - only used for file i/o
     std::string fileName;
     std::vector<std::vector<double>> audioData;
+    int numSamples; //must be recalculated whenever audioData's size might be changed
     //maybe worth considering a template for buffers of various sizes? (8,16, 32 etc)
     //isValid() (check for standard wav structure, reject otherwise)
 public:

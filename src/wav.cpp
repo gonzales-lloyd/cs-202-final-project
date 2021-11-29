@@ -104,7 +104,7 @@ void Wav::loadAudioData(){
     //Note that the vector is audioData[channel][sample number]
     audioData.resize(header.num_channels);
 
-    int numSamples = header.buffer_size / (header.num_channels * header.bits_per_sample / 8);
+    numSamples = header.buffer_size / (header.num_channels * header.bits_per_sample / 8);
     if(header.bits_per_sample == 8){
         for(int i = 0; i<numSamples; i++){
             for(int channel = 0; channel<header.num_channels; channel++){
@@ -133,7 +133,7 @@ void Wav::loadAudioData(){
 }
 
 void Wav::rewriteBuffer(){
-    int numSamples = header.buffer_size / (header.num_channels * header.bits_per_sample / 8);
+    //there needs to be a check here to see if the buffer needs to be reallocated if audioData is longer than expected
     if(header.bits_per_sample == 8){
         for(int i = 0; i<numSamples; i++){
             for(int channel = 0; channel<header.num_channels; channel++){
