@@ -18,7 +18,7 @@ CFLAGS   := -Wall
 LDFLAGS  := -Llib
 LDLIBS   := -lm
 
-.PHONY: all clean
+.PHONY: all clean docs
 
 all: $(EXE)
 
@@ -33,5 +33,8 @@ $(BIN_DIR) $(OBJ_DIR):
 
 clean:
 	@$(RM) -rv $(OBJ_DIR) wav_manager
+
+docs:
+	doxygen Doxyfile
 
 -include $(OBJ:.o=.d)
