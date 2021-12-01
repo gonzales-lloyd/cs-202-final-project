@@ -9,7 +9,24 @@ void WavManipulation::adjust_gain(Wav &wav_obj, float scale){
 }
 
 void WavManipulation::echo(Wav& wav_obj, double gain, int delay){
+    //where delay is in samples!!
+    auto temp = wav_obj.audioData;
 
+    for(int i = 0; i<wav_obj.numSamples; i++){
+        for(int channel = 0; channel<wav_obj.header.num_channels; channel++){
+            if (i > delay){ 
+			    temp[channel][i] += gain * temp[channel][i - delay];
+		    }
+		}
+    }
+
+    for(int i = 0; i<wav_obj.numSamples; i++){
+        for(int channel = 0; channel<wav_obj.header.num_channels; channel++){
+            if(i+delay < wav_obj.numSamples){
+                wav_obj.audioData[channel][i] += temp[channel][i + delay];
+            }
+		}
+    }
 }
 
 void WavManipulation::normalize(Wav& wav_obj){

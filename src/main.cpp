@@ -7,8 +7,6 @@
 #include "wavmanip.h"
 #include <iomanip>
 
-#include "AudioFile.h"
-
 /**
  * Program logic console.
  */
@@ -129,8 +127,8 @@ int main (int argc, char *argv[]){
     Wav wav_obj;
     wav_obj.readFile(path);
     //WavManipulation::normalize(wav_obj);
-    WavManipulation::adjust_gain(wav_obj, 10);
-    
+    WavManipulation::echo(wav_obj, 0.5, 25000);
+
     wav_obj.rewriteBuffer();
     wav_obj.writeFile("out.wav");
     //a.save("out.wav");
