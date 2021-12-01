@@ -128,11 +128,12 @@ int main (int argc, char *argv[]){
     
     Wav wav_obj;
     wav_obj.readFile(path);
-    WavManipulation::adjust_gain(wav_obj, 2);
+    //WavManipulation::normalize(wav_obj);
+    WavManipulation::adjust_gain(wav_obj, 10);
     
     wav_obj.rewriteBuffer();
     wav_obj.writeFile("out.wav");
     //a.save("out.wav");
     
     return 0;
-} 
+}

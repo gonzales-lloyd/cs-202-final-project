@@ -20,13 +20,13 @@ void WavManipulation::normalize(Wav& wav_obj){
     //can't get the above to work
     double max_value = 0;
     for(int i = 0; i<wav_obj.numSamples; i++){
-        for(int channel = 0; i<wav_obj.header.num_channels; i++){
+        for(int channel = 0; channel<wav_obj.header.num_channels; channel++){
             double sample = wav_obj.audioData[channel][i];
             if(std::abs(sample) > max_value){
                 max_value = std::abs(sample);
             }
         }
     }
-    std::cout << "Max value was " << max_value << ", so a gain of " << (1/max_value) << "was applied" << std::endl;
+    std::cout << "Max value was " << max_value << ", so a gain of " << (1/max_value) << " was applied" << std::endl;
     adjust_gain(wav_obj, (1/max_value));
 }
