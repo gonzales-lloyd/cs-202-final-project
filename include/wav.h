@@ -22,7 +22,6 @@ public: //change to private as necessary
     std::string fileName;
     std::vector<std::vector<double>> audioData;
     int numSamples; //must be recalculated whenever audioData's size might be changed
-    //maybe worth considering a template for buffers of various sizes? (8,16, 32 etc)
     //isValid() (check for standard wav structure, reject otherwise)
 public:
     /**

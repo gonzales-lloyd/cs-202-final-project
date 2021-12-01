@@ -91,7 +91,7 @@ int consoleLoop(){
  * Main function.
  */
 int main (int argc, char *argv[]){
-    return consoleLoop();
+    //return consoleLoop();
 
     std::string path;
     if(argc != 2){
@@ -101,7 +101,6 @@ int main (int argc, char *argv[]){
         path = argv[1];
     }
     /*
-    
     Wav wav_obj;
     wav_obj.readFile(path);
     std::cout << std::hex << std::setfill('0') << std::setw(2) << wav_obj.buffer[0] << std::endl;
@@ -111,12 +110,9 @@ int main (int argc, char *argv[]){
     wav_obj.writeFile("out.wav");
     */
     
-    AudioFile<double> a;
+    
+    /* AudioFile<double> a;
     bool loadedOK = a.load(path);
-
-    /* If you hit this assert then the file path above
-     probably doesn't refer to a valid audio file */
-    assert (loadedOK);
 
     Wav wav_obj;
     wav_obj.readFile(path);
@@ -125,8 +121,15 @@ int main (int argc, char *argv[]){
         for (int channel = 0; channel < a.getNumChannels(); channel++){
             wav_obj.audioData[channel][i] *= 0.1;
         }
-    }
+    } */
 
+    
+
+    
+    Wav wav_obj;
+    wav_obj.readFile(path);
+    WavManipulation::adjust_gain(wav_obj, 2);
+    
     wav_obj.rewriteBuffer();
     wav_obj.writeFile("out.wav");
     //a.save("out.wav");
