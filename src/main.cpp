@@ -56,15 +56,38 @@ int consoleLoop(){
             }else if(userInput == "r"){
                 continue;
             }else if(userInput == "1"){
-                
+                WavManipulation::normalize(wav_obj);
             }else if(userInput == "2"){
+                int delay;
+                double gain;
 
+                std::cout << "Enter what position you want the delay to start: ";
+                std::cin >> delay;
+
+                std::cout << "Enter what you want the gain to be, less than 1: ";
+                std::cin >> gain;
+                if(std::cin.fail()){
+                    std::cout << "Invalid values entered - returning to main menu." << std::endl;
+                    continue;
+                }
+                WavManipulation::echo(wav_obj, gain, delay);
             }else if(userInput == "3"){
+                double gain;
 
+                std::cout << "Enter the desired scale factor: ";
+                std::cin >> gain;
+
+                if(std::cin.fail()){
+                    std::cout << "Invalid value entered - returning to main menu." << std::endl;
+                    continue;
+                }
+                WavManipulation::adjust_gain(wav_obj, gain);
             }else if(userInput == "4"){
-
+                std::cout << "This hasn't been implemented - returning to main menu." << std::endl;
+                continue; 
             }else if(userInput == "5"){
-
+                std::cout << "This hasn't been implemented - returning to main menu." << std::endl;
+                continue; 
             }else{
                 std::cout << "Invalid option - returning to main menu." << std::endl;
                 continue;
@@ -75,6 +98,8 @@ int consoleLoop(){
             try{
                 wav_obj.rewriteBuffer();
                 wav_obj.writeFile(newpath);
+                std::cout << "File \"" << newpath << "\" saved."
+                          << "\n" << "============================================" << "\n" << std::endl;
             }catch(const std::runtime_error &e){
                 std::cout << e.what() << std::endl;
                 std::cout << "Please try again." << std::endl;
@@ -89,7 +114,7 @@ int consoleLoop(){
  * Main function.
  */
 int main (int argc, char *argv[]){
-    //return consoleLoop();
+    return consoleLoop();
 
     std::string path;
     if(argc != 2){
