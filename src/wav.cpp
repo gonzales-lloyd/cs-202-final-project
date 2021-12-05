@@ -4,9 +4,7 @@
  * @brief Implementation file for the Wav class.
  * 
  * @todo implement checks to ensure Wav isn't used before a file has been properly loaded
- * @bug If the file name to readFile() is invalid, this causes a segfault
  * @bug No protection or checks against the length of audioData being changed
- * @bug No protection or checks if the header structure is different from expected (or if a non-wav file is loaded)
  */
 
 #include "wav.h"
@@ -40,6 +38,7 @@ void Wav::readFile(const std::string &fileName){
         loadAudioData();
         wav_file.clear();
         wav_file.close();
+        fileLoaded = true;
     }else{
         wav_file.clear();
         throw std::runtime_error("Couldn't open file");
@@ -248,7 +247,7 @@ int Wav::secondAsSample(double sec) const{
 }
 
 Wav::~Wav(){
-    if(buffer != NULL){
+    if(fileLoaded){
         delete[] buffer;
     }
 }

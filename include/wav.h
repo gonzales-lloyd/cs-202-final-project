@@ -46,6 +46,7 @@ private:
     std::string fileName;
     
     int samplesPerChannel; //samples per channel - must be updated whenever a length-modifying action happens
+    bool fileLoaded = false;
 public:
     /**
      * @brief Get the audio format, where 1 indicates PCM and others indicate compression.
