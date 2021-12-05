@@ -28,7 +28,7 @@ void WavManipulation::echo(Wav& wav_obj, double gain, int delay){
      * - go if i > iteration*delay then temp[channel][i] += iteration_scale*temp[channel][i-delay*iteratoin]
      * 
      */
-    for(int i = 0; i<wav_obj.getNumChannels(); i++){
+    for(int i = 0; i<wav_obj.getSamplesPerChannel(); i++){
         for(int channel = 0; channel<wav_obj.getNumChannels(); channel++){
             if (i > delay){ 
 			    temp[channel][i] += gain * temp[channel][i - delay];
@@ -36,9 +36,9 @@ void WavManipulation::echo(Wav& wav_obj, double gain, int delay){
 		}
     }
 
-    for(int i = 0; i<wav_obj.getNumChannels(); i++){
+    for(int i = 0; i<wav_obj.getSamplesPerChannel(); i++){
         for(int channel = 0; channel<wav_obj.getNumChannels(); channel++){
-            if(i+delay < wav_obj.getNumChannels()){
+            if(i+delay < wav_obj.getSamplesPerChannel()){
                 wav_obj.audioData[channel][i] += temp[channel][i + delay];
             }
 		}
@@ -52,7 +52,7 @@ void WavManipulation::normalize(Wav& wav_obj){
 
     //can't get the above to work
     double max_value = 0;
-    for(int i = 0; i<wav_obj.getNumChannels(); i++){
+    for(int i = 0; i<wav_obj.getSamplesPerChannel(); i++){
         for(int channel = 0; channel<wav_obj.getNumChannels(); channel++){
             double sample = wav_obj.audioData[channel][i];
             if(std::abs(sample) > max_value){
@@ -62,4 +62,44 @@ void WavManipulation::normalize(Wav& wav_obj){
     }
     std::cout << "Max value was " << max_value << ", so a gain of " << (1/max_value) << " was applied" << std::endl;
     adjust_gain(wav_obj, (1/max_value));
+}
+
+void WavManipulation::compress(Wav &wav_obj, double threshold, double attenuation_factor){
+    threshold = Wav::clamp<double>(threshold, 0.0, 1.0);
+    attenuation_factor = Wav::clamp<double>(attenuation_factor, 0.0, 1.0);
+
+    for(int i = 0; i<wav_obj.getSamplesPerChannel(); i++){
+        for(int channel = 0; channel<wav_obj.getNumChannels(); channel++){
+            double sample = wav_obj.audioData[channel][i];
+            if(std::abs(sample) > threshold){
+                double difference = std::abs(sample)-threshold;
+                if(sample > 0){
+                    wav_obj.audioData[channel][i] -= difference*attenuation_factor;
+                }else{
+                    wav_obj.audioData[channel][i] += difference*attenuation_factor;
+                }
+            }
+        }
+    }
+}
+
+void WavManipulation::lowpass(Wav &wav_obj, int delay, double prop, double gain){
+    auto temp = wav_obj.audioData;
+
+    for(int i = 0; i<wav_obj.getSamplesPerChannel(); i++){
+        for(int channel = 0; channel<wav_obj.getNumChannels(); channel++){
+            if (i > delay){ 
+			    temp[channel][i] += (prop * temp[channel][i - delay]);
+                temp[channel][i] *= gain;
+		    }
+		}
+    }
+
+    for(int i = 0; i<wav_obj.getSamplesPerChannel(); i++){
+        for(int channel = 0; channel<wav_obj.getNumChannels(); channel++){
+            if(i+delay < wav_obj.getNumChannels()){
+                wav_obj.audioData[channel][i] = temp[channel][i];
+            }
+		}
+    }
 }

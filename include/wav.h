@@ -92,7 +92,7 @@ public:
      * Manual implementation of std::clamp from C++17.
      */
     template <typename T>
-    T clamp (T value, T minValue, T maxValue);
+    static T clamp (T value, T minValue, T maxValue);
     /**
      * @brief Read the WAV file at a certain path, loading data into this class.
      * 
