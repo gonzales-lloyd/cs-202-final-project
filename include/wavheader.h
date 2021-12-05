@@ -1,17 +1,18 @@
 /**
- * @file wav.h
+ * @file wavheader.h
+ * @author Lloyd Gonzales (gonzales-lloyd)
  * @brief Header file for the wav_header struct.
+ * 
+ * wav_header is a struct containing all of the attributes expected of a WAV header 
+ * based on http://soundfile.sapp.org/doc/WaveFormat/.
  * 
  * Adapted from Dr. Lancaster's video and the WAV format link provided.
  */
 
-//int = 4 bytes, short = 2, char used where applicable
-
-//include guard, just in case
 #ifndef wavheader_h
 #define wavheader_h
 /**
- * Struct containing data for all parts of the WAV header.
+ * @brief Struct containing data for all parts of the WAV header.
  */
 typedef struct wav_header {
     //riff chunk descriptor

@@ -1,30 +1,16 @@
 /**
  * @file wav.cpp
+ * @author Lloyd Gonzales (gonzales-lloyd)
  * @brief Implementation file for the Wav class.
  * 
- * Adapted from Dr. Lancaster's video.
+ * @todo implement checks to ensure Wav isn't used before a file has been properly loaded
+ * @bug If the file name to readFile() is invalid, this causes a segfault
+ * @bug No protection or checks against the length of audioData being changed
+ * @bug No protection or checks if the header structure is different from expected (or if a non-wav file is loaded)
  */
 
 #include "wav.h"
 
-/**
- * How the public implementation (AudioFile.h) works:
- * 
- * 1. Define a 2D vector std::vector<std::vector<T>> that holds all of the samples. 
- *    This vector is split into vector[channel][sampleIndex].
- * 2. Use the header data correctly to do things
- * 3. Validate the header data
- * 4. Once done, read through the number of bytes specified in the header
- *    and convert everything to a double
- */
-
-/**
- * Read the input file and store WAV information to `header` and `buffer`.
- * THIS SHOULD BE THE CONSTRUCTOR SO THE WAV HEADER CAN'T BE READ BEFOREHAND
- * No error-checking or error output is currently provided.
- * 
- * @param fileName The input file path.
- */
 void Wav::readFile(const std::string &fileName){
     std::ifstream wav_file(fileName, std::ios::binary | std::ios::in);
     if(wav_file.is_open()){
@@ -33,19 +19,14 @@ void Wav::readFile(const std::string &fileName){
         buffer = new unsigned char[header.buffer_size]; //allocate memory for the buffer
         wav_file.read((char*)buffer, header.buffer_size); //read remainder of file equal to buffer size into buffer
         loadAudioData();
+        wav_file.clear();
         wav_file.close();
     }else{
+        wav_file.clear();
         throw std::runtime_error("Couldn't open file");
     }
 }
 
-/**
- * Write to the output file using the WAV information stored in `header` and `buffer`.
- * 
- * No error-checking or error output is currently provided.
- * 
- * @param fileName The output file path.
- */
 void Wav::writeFile(const std::string &fileName){
     std::ofstream wav_file(fileName, std::ios::binary | std::ios::out);
     if(wav_file.is_open()){
@@ -104,9 +85,9 @@ void Wav::loadAudioData(){
     //Note that the vector is audioData[channel][sample number]
     audioData.resize(header.num_channels);
 
-    numSamples = header.buffer_size / (header.num_channels * header.bits_per_sample / 8);
+    samplesPerChannel = header.buffer_size / (header.num_channels * header.bits_per_sample / 8);
     if(header.bits_per_sample == 8){
-        for(int i = 0; i<numSamples; i++){
+        for(int i = 0; i<samplesPerChannel; i++){
             for(int channel = 0; channel<header.num_channels; channel++){
                 unsigned char data = buffer[(i*header.num_channels)+channel];
                 //now convert this to a double
@@ -118,7 +99,7 @@ void Wav::loadAudioData(){
         }
     }else if (header.bits_per_sample == 16){
         signed short* shortBuffer = reinterpret_cast<signed short*>(buffer);
-        for(int i = 0; i<numSamples; i++){
+        for(int i = 0; i<samplesPerChannel; i++){
             for(int channel = 0; channel<header.num_channels; channel++){
                 signed short data = shortBuffer[(i*header.num_channels)+channel];
                 //and convert to double by dividing by the max of a signed short
@@ -133,9 +114,9 @@ void Wav::loadAudioData(){
 }
 
 void Wav::rewriteBuffer(){
-    //there needs to be a check here to see if the buffer needs to be reallocated if audioData is longer than expected
+    //there needs to be a check here to see if the buffer needs to be reallocated if the length of AudioData has changed
     if(header.bits_per_sample == 8){
-        for(int i = 0; i<numSamples; i++){
+        for(int i = 0; i<samplesPerChannel; i++){
             for(int channel = 0; channel<header.num_channels; channel++){
                 //ensure sample is within double bounds
                 double sample = clamp(audioData[channel][i], -1.0, 1.0);
@@ -150,7 +131,7 @@ void Wav::rewriteBuffer(){
         }
     }else if (header.bits_per_sample == 16){
         signed short* shortBuffer = reinterpret_cast<signed short*>(buffer);
-        for(int i = 0; i<numSamples; i++){
+        for(int i = 0; i<samplesPerChannel; i++){
             for(int channel = 0; channel<header.num_channels; channel++){
                 //ensure sample is within double bounds
                 double sample = clamp(audioData[channel][i], -1.0, 1.0);
@@ -218,30 +199,22 @@ std::string Wav::getMetaData() const{
     return result.str();
 }
 
-/**
- * Get the full contents of the buffer (i.e. audio data).
- * 
- * @return The buffer.
- */
-unsigned char* Wav::getBuffer(){
-    return buffer;
+short Wav::getAudioFormat() const{
+    return header.audio_format;
 }
 
-/**
- * Get the size of the buffer (i.e. audio data).
- * 
- * @return The buffer.
- */
-int Wav::getBufferSize() const{
-    return header.buffer_size;
+short Wav::getNumChannels() const{
+    return header.num_channels;
 }
 
-/**
- * Destructor for the Wav class.
- * 
- * Ensures that if the Wav class's destructor is called, the memory 
- * allocated for the buffer is deallocated as well.
- */
+int Wav::getSampleRate() const{
+    return header.sample_rate;
+}
+
+int Wav::getSamplesPerChannel() const{
+    return samplesPerChannel;
+}
+
 Wav::~Wav(){
     if(buffer != NULL){
         delete[] buffer;

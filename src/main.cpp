@@ -1,11 +1,27 @@
 /**
  * @file main.cpp
+ * @author Lloyd Gonzales (gonzales-lloyd)
  * @brief The driver file.
+ * 
+ * @bug Invalid inputs on main menu are not cleared and cause segfaults
+ * 
+ * This file should only be used for the console version, where applicable.
+ * 
  */
 
 #include "wav.h"
 #include "wavmanip.h"
 #include <iomanip>
+
+bool cinFailCheck(){
+    if(std::cin.fail()){
+        std::cout << "Invalid value entered - returning to start." << std::endl;
+        std::cin.clear();
+        std::cin.ignore(10000,'\n');
+        return true;
+    }
+    return false;
+}
 
 /**
  * Program logic console.
@@ -63,13 +79,11 @@ int consoleLoop(){
 
                 std::cout << "Enter what position you want the delay to start: ";
                 std::cin >> delay;
+                if(cinFailCheck()){continue;}
 
                 std::cout << "Enter what you want the gain to be, less than 1: ";
                 std::cin >> gain;
-                if(std::cin.fail()){
-                    std::cout << "Invalid values entered - returning to main menu." << std::endl;
-                    continue;
-                }
+                if(cinFailCheck()){continue;}
                 WavManipulation::echo(wav_obj, gain, delay);
             }else if(userInput == "3"){
                 double gain;
@@ -77,19 +91,44 @@ int consoleLoop(){
                 std::cout << "Enter the desired scale factor: ";
                 std::cin >> gain;
 
-                if(std::cin.fail()){
-                    std::cout << "Invalid value entered - returning to main menu." << std::endl;
-                    continue;
-                }
+                if(cinFailCheck()){continue;}
+
                 WavManipulation::adjust_gain(wav_obj, gain);
             }else if(userInput == "4"){
-                std::cout << "This hasn't been implemented - returning to main menu." << std::endl;
-                continue; 
+                int delay;
+                double prop;
+                double gain;
+
+                std::cout << "Enter the delay in samples: ";
+                std::cin >> delay;
+                if(cinFailCheck()){continue;}
+
+                std::cout << "Enter the prop: ";
+                std::cin >> prop;
+                if(cinFailCheck()){continue;}
+
+                std::cout << "Enter what you want the gain to be: ";
+                std::cin >> gain;
+                if(cinFailCheck()){continue;}
+
+                WavManipulation::lowpass(wav_obj, delay, prop, gain);
             }else if(userInput == "5"){
-                std::cout << "This hasn't been implemented - returning to main menu." << std::endl;
-                continue; 
+                double threshold;
+                double attenuation_factor;
+
+                std::cout << "Enter the sample amplitude threshold to start attenuating audio, from 0 to 1 (1 being the max amplitude of the audio): ";
+                std::cin >> threshold;
+                std::cout << threshold << std::endl;
+                if(cinFailCheck()){continue;}
+
+                std::cout << "Enter the attenuation factor for samples over the threshold, from 0 to 1 (1 restricts all audio to the threshold, 0 leaves audio unchanged): ";
+                std::cin >> attenuation_factor;
+                if(cinFailCheck()){continue;}
+                WavManipulation::compress(wav_obj, threshold, attenuation_factor);
             }else{
-                std::cout << "Invalid option - returning to main menu." << std::endl;
+                std::cout << "Invalid option - returning to start." << std::endl;
+                std::cin.clear();
+                std::cin.ignore(10000,'\n');
                 continue;
             }
             std::cout << "Please enter the save location:" << std::endl;
