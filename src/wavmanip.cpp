@@ -19,6 +19,15 @@ void WavManipulation::echo(Wav& wav_obj, double gain, int delay){
     //where delay is in samples!!
     auto temp = wav_obj.audioData;
 
+    /**
+     * for multiple iterations:
+     * - calculate the number of iterations from the delay and the decay factor
+     *   (i.e. how many delays is it going to take before the extra echos are 0?)
+     * - if decay factor > 1, calculate the number of delays between the end of the
+     *   audio and the start of the echoed range and use that as the iteration count
+     * - go if i > iteration*delay then temp[channel][i] += iteration_scale*temp[channel][i-delay*iteratoin]
+     * 
+     */
     for(int i = 0; i<wav_obj.getNumChannels(); i++){
         for(int channel = 0; channel<wav_obj.getNumChannels(); channel++){
             if (i > delay){ 
