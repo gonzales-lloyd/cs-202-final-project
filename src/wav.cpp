@@ -1,8 +1,12 @@
 /**
  * @file wav.cpp
+ * @author Lloyd Gonzales (gonzales-lloyd)
  * @brief Implementation file for the Wav class.
  * 
- * Adapted from Dr. Lancaster's video.
+ * @todo implement checks to ensure Wav isn't used before a file has been properly loaded
+ * @bug If the file name to readFile() is invalid, this causes a segfault
+ * @bug No protection or checks against the length of audioData being changed
+ * @bug No protection or checks if the header structure is different from expected (or if a non-wav file is loaded)
  */
 
 #include "wav.h"
@@ -108,7 +112,7 @@ void Wav::loadAudioData(){
 }
 
 void Wav::rewriteBuffer(){
-    //there needs to be a check here to see if the buffer needs to be reallocated if audioData is longer than expected
+    //there needs to be a check here to see if the buffer needs to be reallocated if the length of AudioData has changed
     if(header.bits_per_sample == 8){
         for(int i = 0; i<samplesPerChannel; i++){
             for(int channel = 0; channel<header.num_channels; channel++){

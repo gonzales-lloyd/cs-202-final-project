@@ -1,3 +1,10 @@
+/**
+ * @file wavmanip.cpp
+ * @author Grant Pellegrini (GrantPellegrini)
+ * @author Lloyd Gonzales (gonzales-lloyd)
+ * @brief Implementation file for the WavManipulation class.
+ */
+
 #include "wavmanip.h"
 
 void WavManipulation::adjust_gain(Wav &wav_obj, float scale){

@@ -1,6 +1,18 @@
 /**
  * @file wav.h
+ * @author Lloyd Gonzales (gonzales-lloyd)
  * @brief Header file for the Wav class.
+ * 
+ * @todo implement checks to ensure Wav isn't used before a file has been properly loaded
+ * @todo implement logic to reject non-PCM and non-8/16 bit data
+ * @bug If the file name to readFile() is invalid, this causes a segfault
+ * @bug No protection or checks against the length of audioData being changed
+ * @bug No protection or checks if the header structure is different from expected (or if a non-wav file is loaded)
+ * 
+ * Wav is a class that represents the audio data and header of a WAV file.
+ * It also handles file I/O for the WAV file, providing an interface for interacting 
+ * with header and buffer data. The header and buffer data is written and read 
+ * according to the information provided at http://soundfile.sapp.org/doc/WaveFormat/.
  */
 
 #include <fstream>

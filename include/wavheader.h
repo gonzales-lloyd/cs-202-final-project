@@ -1,6 +1,10 @@
 /**
- * @file wav.h
+ * @file wavheader.h
+ * @author Lloyd Gonzales (gonzales-lloyd)
  * @brief Header file for the wav_header struct.
+ * 
+ * wav_header is a struct containing all of the attributes expected of a WAV header 
+ * based on http://soundfile.sapp.org/doc/WaveFormat/.
  * 
  * Adapted from Dr. Lancaster's video and the WAV format link provided.
  */

@@ -1,6 +1,12 @@
 /**
  * @file main.cpp
+ * @author Lloyd Gonzales (gonzales-lloyd)
  * @brief The driver file.
+ * 
+ * @bug Invalid inputs on main menu are not cleared and cause segfaults
+ * 
+ * This file should only be used for the console version, where applicable.
+ * 
  */
 
 #include "wav.h"
