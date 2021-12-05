@@ -33,13 +33,12 @@ To generate the GUI version of the program...
 ## Known issues and missing functionality
 
 ### Bugs
-- If the file name to `Wav::readFile()` is invalid, a segfault occurs
 - If the end time passed into `WavManipulation::echo()` is too large, the program hangs (other extreme inputs of correct data types may cause similar behavior)
 ### Design oversights
 - No protection against the length of audioData being changed by an external class, which would cause the Wav class to break when trying to rewrite the buffer to a file
-- No protection or checks if the header structure is different from expected
-### Design oversights
+### Other
 - Unsure what low-pass filter should sound like, but it is implemented according to the diagram sent in the Discord server
 - GUI does not run on Windows without additionally adding several DLL files must also be manually added to the executable folder and to \platforms\... (see https://stackoverflow.com/questions/20495620/qt-5-1-1-application-failed-to-start-because-platform-plugin-windows-is-missi); `windeployqt` fails to correctly add dependencies
+- The Wav class provides `fileLoaded`, an attribute flag denoting whether an audio file has been successfully loaded or not. This flag is only internally used for deciding whether to free the internal buffer or not, but it may be relevant if the class were to ever be used as a library.
 
 ## Challenges encountered
