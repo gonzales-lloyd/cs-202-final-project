@@ -85,6 +85,11 @@ void Wav::loadAudioData(){
     //Note that the vector is audioData[channel][sample number]
     audioData.resize(header.num_channels);
 
+    //check if PCM, warn otherwise
+    if(header.audio_format != 1){
+        std::cout << "This audio does not appear to be in PCM form. Bad things may happen." << std::endl;
+    }
+
     samplesPerChannel = header.buffer_size / (header.num_channels * header.bits_per_sample / 8);
     if(header.bits_per_sample == 8){
         for(int i = 0; i<samplesPerChannel; i++){
@@ -109,7 +114,9 @@ void Wav::loadAudioData(){
             }
         }
     }else{
-        throw std::logic_error("Attempted to decode non 8/16-bit buffer");
+        //alright, semantically speaking this isn't an exception
+        //but i believe this is the simplest way to kick out the user
+        throw std::runtime_error("This program only supports 8- and 16-bit audio!");
     }
 }
 
@@ -144,6 +151,7 @@ void Wav::rewriteBuffer(){
         //finally, recast buffer and rewrite
         buffer = reinterpret_cast<unsigned char*>(buffer);
     }else{
+        //this should never happen
         throw std::logic_error("Attempted to decode non 8/16-bit buffer");
     }
 }
