@@ -35,6 +35,6 @@ To generate the GUI version of the program...
 - No protection or checks if the header structure is different from expected
 - If the file name to `readFile()` is invalid, a segfault occurs
 - Does not reject non-PCM and non-8/16 bit data, when it can only support PCM and 8/16-bit data
-- Deployment (i.e. not debug) GUI does not run on Windows without additionally adding QT_QPA_PLATFORM_PLUGIN_PATH=%QTDIR%\plugins\platforms\ to PATH; several DLL files must also be manually added
+- GUI does not run on Windows without additionally adding several DLL files must also be manually added to the executable folder and to \platforms\... (see https://stackoverflow.com/questions/20495620/qt-5-1-1-application-failed-to-start-because-platform-plugin-windows-is-missi); `windeployqt` fails to correctly add dependencies
 
 ## Challenges encountered
