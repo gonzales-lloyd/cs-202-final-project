@@ -19,19 +19,19 @@ bool MenuLogic::normalizeMenu(Wav &wav_obj){
 bool MenuLogic::echoMenu(Wav &wav_obj){
     double start_sec, end_sec, decay_factor, delay;
 
-    std::cout << "Enter the start of the audio to be echoed, in seconds: ";
+    std::cout << "Enter the start of the audio to be echoed, in seconds: " << "\n>>> ";
     std::cin >> start_sec;
     if(cinFailCheck()){return false;}
 
-    std::cout << "Enter the end of the audio to be echoed, in seconds: ";
+    std::cout << "Enter the end of the audio to be echoed, in seconds: " << "\n>>> ";
     std::cin >> end_sec;
     if(cinFailCheck()){return false;}
 
-    std::cout << "Enter the decay factor (for example, 0.5 halves the amplitude of the echoed audio each time): " << std::endl;
+    std::cout << "Enter the decay factor (for example, 0.5 halves the amplitude of the echoed audio each time): " << "\n>>> ";
     std::cin >> decay_factor;
     if(cinFailCheck()){return false;}
 
-    std::cout << "Enter the delay between each audio, in seconds (negative delays cause overlapping audio after the first echo): ";
+    std::cout << "Enter the delay between each audio, in seconds (negative delays cause overlapping audio after the first echo): " << "\n>>> ";
     std::cin >> delay;
     if(cinFailCheck()){return false;}
 
@@ -42,7 +42,7 @@ bool MenuLogic::echoMenu(Wav &wav_obj){
 bool MenuLogic::gainMenu(Wav &wav_obj){
     double gain;
 
-    std::cout << "Enter the desired scale factor: ";
+    std::cout << "Enter the desired scale factor: " << "\n>>> ";
     std::cin >> gain;
 
     if(cinFailCheck()){return false;}
@@ -55,11 +55,11 @@ bool MenuLogic::lowPassMenu(Wav &wav_obj){
         int delay;
         double gain;
 
-        std::cout << "Enter the delay (in samples): ";
+        std::cout << "Enter the delay (in samples): " << "\n>>> ";
         std::cin >> delay;
         if(cinFailCheck()){return false;}
 
-        std::cout << "Enter what you want the gain to be: ";
+        std::cout << "Enter what you want the gain to be: " << "\n>>> ";
         std::cin >> gain;
         if(cinFailCheck()){return false;}
 
@@ -71,12 +71,12 @@ bool MenuLogic::compressionMenu(Wav &wav_obj){
     double threshold;
     double attenuation_factor;
 
-    std::cout << "Enter the sample amplitude threshold to start attenuating audio, from 0 to 1 (1 being the max amplitude of the audio): ";
+    std::cout << "Enter the sample amplitude threshold to start attenuating audio, from 0 to 1 (1 being the max amplitude of the audio): " << "\n>>> ";
     std::cin >> threshold;
     std::cout << threshold << std::endl;
     if(cinFailCheck()){return false;}
 
-    std::cout << "Enter the attenuation factor for samples over the threshold, from 0 to 1 (1 restricts all audio to the threshold, 0 leaves audio unchanged): ";
+    std::cout << "Enter the attenuation factor for samples over the threshold, from 0 to 1 (1 restricts all audio to the threshold, 0 leaves audio unchanged): " << "\n>>> ";
     std::cin >> attenuation_factor;
     if(cinFailCheck()){return false;}
 
@@ -85,14 +85,14 @@ bool MenuLogic::compressionMenu(Wav &wav_obj){
 }
 
 bool MenuLogic::promptSave(Wav &wav_obj){
-    std::cout << "Please enter the save location:" << std::endl;
+    std::cout << "Please enter the save location:" << "\n>>> ";
     std::string newpath;
     std::cin >> newpath;
     try{
         wav_obj.rewriteBuffer();
         wav_obj.writeFile(newpath);
         std::cout << "File \"" << newpath << "\" saved."
-                    << "\n" << "============================================" << "\n" << std::endl;
+                    << "\n" << "============================================" << std::endl;
     }catch(const std::runtime_error &e){
         std::cout << e.what() << std::endl;
         std::cout << "Please try again." << std::endl;
@@ -110,7 +110,7 @@ int MenuLogic::consoleLoop(){
     while(true){
         //ask for filepath
         std::string filepath;
-        std::cout << "Enter filepath of wav file ('q' to quit): " << std::endl; 
+        std::cout << "Enter filepath of wav file ('q' to quit): " << "\n>>> "; 
         std::cin >> filepath;
         if(filepath == "q"){
             break;
@@ -142,7 +142,7 @@ int MenuLogic::consoleLoop(){
                       << "\n" << "==Commands=="
                       << "\n" << "r - Return to main menu and select another file"
                       << "\n" << "q - Quit program" 
-                      << std::endl;
+                      << "\n>>> ";
             std::cin >> userInput;
             //option logic
             if(userInput == "q"){
