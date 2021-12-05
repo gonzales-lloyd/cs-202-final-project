@@ -255,7 +255,7 @@ Static Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Generate an echo of the selected audio in a <a class="el" href="classWav.html" title="Class used for representing a WAV file.">Wav</a> object. </p>
-<dl class="bug"><dt><b><a class="el" href="bug.html#_bug000005">Bug:</a></b></dt><dd>Excessive values for <code>end_sec</code> appear to cause the program to stall.</dd></dl>
+<dl class="bug"><dt><b><a class="el" href="bug.html#_bug000003">Bug:</a></b></dt><dd>Excessive values for <code>end_sec</code> appear to cause the program to stall.</dd></dl>
 <p>This implementation does not behave like the Audacity implementation or the implementation used in Dr. Lancaster's echo videos.</p>
 <p>To generate an echo, this function isolates the audio selected by the <code>start_sec</code> and <code>end_sec</code> parameters, and then starts repeating the audio (typically softer each time) after the end of the audio selection. The delay allows the echoes to overlap (if negative) or be followed by silence on each echo (if positive).</p>
 <p>Note that the decay factor is multiplicative - after one echo, a decay factor of 0.5 causes the next echo to have an amplitude 0.25 times that of the original selection.</p>

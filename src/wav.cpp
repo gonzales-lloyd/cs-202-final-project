@@ -3,7 +3,7 @@
  * @author Lloyd Gonzales (gonzales-lloyd)
  * @brief Implementation file for the Wav class.
  * 
- * @todo implement checks to ensure Wav isn't used before a file has been properly loaded
+ * @bug Undefined behavior if Wav object used before a file has been loaded
  * @bug No protection or checks against the length of audioData being changed
  */
 
