@@ -31,9 +31,12 @@ To generate the GUI version of the program...
 ## UML diagram
 
 ## Known issues and missing functionality
+**Bugs**
+- If the file name to `readFile()` is invalid, a segfault occurs
+**Missing functionality**
+- Unsure what low-pass filter should sound like, but it is implemented according to the diagram sent in the Discord server
 - No protection against the length of audioData being changed by an external class, which would cause the Wav class to break when trying to rewrite the buffer to a file
 - No protection or checks if the header structure is different from expected
-- If the file name to `readFile()` is invalid, a segfault occurs
 - Does not reject non-PCM and non-8/16 bit data, when it can only support PCM and 8/16-bit data
 - GUI does not run on Windows without additionally adding several DLL files must also be manually added to the executable folder and to \platforms\... (see https://stackoverflow.com/questions/20495620/qt-5-1-1-application-failed-to-start-because-platform-plugin-windows-is-missi); `windeployqt` fails to correctly add dependencies
 
