@@ -22,8 +22,8 @@
 #include <vector>
 #include "wavheader.h"
 
-#ifndef WAV_CLASS
-#define WAV_CLASS
+#ifndef WAV_H
+#define WAV_H
 /**
  * Class for representing a WAV file.
  */

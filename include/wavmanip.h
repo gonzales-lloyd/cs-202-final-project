@@ -18,6 +18,9 @@
 #include <algorithm>
 #include <cmath>
 
+#ifndef WAVMANIP_H
+#define WAVMANIP_H
+
 class WavManipulation{
 public:
     static void adjust_gain(Wav &wav_obj, float scale); 
@@ -26,3 +29,5 @@ public:
     static void compress(Wav &wav_obj, double threshold, double attenuation);
     static void lowpass(Wav &wav_obj, int delay, double gain);
 };
+
+#endif

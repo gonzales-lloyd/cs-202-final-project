@@ -9,8 +9,8 @@
  * Adapted from Dr. Lancaster's video and the WAV format link provided.
  */
 
-#ifndef wavheader_h
-#define wavheader_h
+#ifndef WAVHEADER_H
+#define WAVHEADER_H
 /**
  * @brief Struct containing data for all parts of the WAV header.
  */
