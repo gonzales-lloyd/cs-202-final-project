@@ -3,6 +3,7 @@ wav_manager
 /.vscode
 out.wav
 
+
 # Prerequisites
 *.d
 
@@ -72,6 +73,9 @@ Thumbs.db
 *.rc
 /.qmake.cache
 /.qmake.stash
+
+# other qt-generated stuff
+/build-*
 
 # qtcreator generated files
 *.pro.user*

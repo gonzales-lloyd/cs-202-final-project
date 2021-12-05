@@ -34,10 +34,14 @@
        <item>
         <layout class="QHBoxLayout" name="horizontalLayout">
          <item>
-          <widget class="QLineEdit" name="lineEdit"/>
+          <widget class="QLineEdit" name="outputPath">
+           <property name="readOnly">
+            <bool>true</bool>
+           </property>
+          </widget>
          </item>
          <item>
-          <widget class="QPushButton" name="pushButton_6">
+          <widget class="QPushButton" name="pathDialogButton">
            <property name="maximumSize">
             <size>
              <width>24</width>
@@ -46,6 +50,10 @@
            </property>
            <property name="text">
             <string/>
+           </property>
+           <property name="icon">
+            <iconset>
+             <normaloff>OneDrive_Folder_Icon.svg.png</normaloff>OneDrive_Folder_Icon.svg.png</iconset>
            </property>
           </widget>
          </item>
@@ -59,7 +67,7 @@
         </widget>
        </item>
        <item>
-        <widget class="QPlainTextEdit" name="plainTextEdit">
+        <widget class="QPlainTextEdit" name="metadataText">
          <property name="readOnly">
           <bool>true</bool>
          </property>
@@ -83,51 +91,41 @@
        <item>
         <layout class="QVBoxLayout" name="verticalLayout">
          <item>
-          <widget class="QPushButton" name="pushButton">
+          <widget class="QPushButton" name="openNormalizeDialog">
            <property name="text">
             <string>Normalize</string>
            </property>
           </widget>
          </item>
          <item>
-          <widget class="QPushButton" name="pushButton_5">
+          <widget class="QPushButton" name="openEchoDialog">
            <property name="text">
             <string>Echo</string>
            </property>
           </widget>
          </item>
          <item>
-          <widget class="QPushButton" name="pushButton_4">
+          <widget class="QPushButton" name="openGainAdjustDialog">
            <property name="text">
             <string>Gain Adjustment</string>
            </property>
           </widget>
          </item>
          <item>
-          <widget class="QPushButton" name="pushButton_2">
+          <widget class="QPushButton" name="openLowPassDialog">
            <property name="text">
             <string>Low-pass Filter</string>
            </property>
           </widget>
          </item>
          <item>
-          <widget class="QPushButton" name="pushButton_3">
+          <widget class="QPushButton" name="openCompressionDialog">
            <property name="text">
             <string>Compression/Limiting</string>
            </property>
           </widget>
          </item>
         </layout>
-       </item>
-       <item>
-        <widget class="QLabel" name="label_3">
-         <property name="text">
-          <string>Hover over an algorithm for more information.</string>
-         </property>
-         <property name="wordWrap">
-          <bool>true</bool>
-         </property>
-        </widget>
        </item>
       </layout>
      </widget>

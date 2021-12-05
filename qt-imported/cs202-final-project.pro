@@ -11,6 +11,7 @@ CONFIG += c++11
 SOURCES += \
     main.cpp \
     mainwindow.cpp
+    ui_gain.cpp
 
 HEADERS += \
     mainwindow.h
