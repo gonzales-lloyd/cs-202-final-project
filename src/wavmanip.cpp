@@ -1,8 +1,8 @@
 #include "wavmanip.h"
 
 void WavManipulation::adjust_gain(Wav &wav_obj, float scale){
-    for(int i = 0; i<wav_obj.numSamples; i++){
-        for(int channel = 0; channel<wav_obj.header.num_channels; channel++){
+    for(int i = 0; i<wav_obj.getSamplesPerChannel(); i++){
+        for(int channel = 0; channel<wav_obj.getNumChannels(); channel++){
                 wav_obj.audioData[channel][i] *= scale;
         }
     }
@@ -12,17 +12,17 @@ void WavManipulation::echo(Wav& wav_obj, double gain, int delay){
     //where delay is in samples!!
     auto temp = wav_obj.audioData;
 
-    for(int i = 0; i<wav_obj.numSamples; i++){
-        for(int channel = 0; channel<wav_obj.header.num_channels; channel++){
+    for(int i = 0; i<wav_obj.getNumChannels(); i++){
+        for(int channel = 0; channel<wav_obj.getNumChannels(); channel++){
             if (i > delay){ 
 			    temp[channel][i] += gain * temp[channel][i - delay];
 		    }
 		}
     }
 
-    for(int i = 0; i<wav_obj.numSamples; i++){
-        for(int channel = 0; channel<wav_obj.header.num_channels; channel++){
-            if(i+delay < wav_obj.numSamples){
+    for(int i = 0; i<wav_obj.getNumChannels(); i++){
+        for(int channel = 0; channel<wav_obj.getNumChannels(); channel++){
+            if(i+delay < wav_obj.getNumChannels()){
                 wav_obj.audioData[channel][i] += temp[channel][i + delay];
             }
 		}
@@ -36,8 +36,8 @@ void WavManipulation::normalize(Wav& wav_obj){
 
     //can't get the above to work
     double max_value = 0;
-    for(int i = 0; i<wav_obj.numSamples; i++){
-        for(int channel = 0; channel<wav_obj.header.num_channels; channel++){
+    for(int i = 0; i<wav_obj.getNumChannels(); i++){
+        for(int channel = 0; channel<wav_obj.getNumChannels(); channel++){
             double sample = wav_obj.audioData[channel][i];
             if(std::abs(sample) > max_value){
                 max_value = std::abs(sample);

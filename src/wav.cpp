@@ -79,9 +79,9 @@ void Wav::loadAudioData(){
     //Note that the vector is audioData[channel][sample number]
     audioData.resize(header.num_channels);
 
-    numSamples = header.buffer_size / (header.num_channels * header.bits_per_sample / 8);
+    samplesPerChannel = header.buffer_size / (header.num_channels * header.bits_per_sample / 8);
     if(header.bits_per_sample == 8){
-        for(int i = 0; i<numSamples; i++){
+        for(int i = 0; i<samplesPerChannel; i++){
             for(int channel = 0; channel<header.num_channels; channel++){
                 unsigned char data = buffer[(i*header.num_channels)+channel];
                 //now convert this to a double
@@ -93,7 +93,7 @@ void Wav::loadAudioData(){
         }
     }else if (header.bits_per_sample == 16){
         signed short* shortBuffer = reinterpret_cast<signed short*>(buffer);
-        for(int i = 0; i<numSamples; i++){
+        for(int i = 0; i<samplesPerChannel; i++){
             for(int channel = 0; channel<header.num_channels; channel++){
                 signed short data = shortBuffer[(i*header.num_channels)+channel];
                 //and convert to double by dividing by the max of a signed short
@@ -110,7 +110,7 @@ void Wav::loadAudioData(){
 void Wav::rewriteBuffer(){
     //there needs to be a check here to see if the buffer needs to be reallocated if audioData is longer than expected
     if(header.bits_per_sample == 8){
-        for(int i = 0; i<numSamples; i++){
+        for(int i = 0; i<samplesPerChannel; i++){
             for(int channel = 0; channel<header.num_channels; channel++){
                 //ensure sample is within double bounds
                 double sample = clamp(audioData[channel][i], -1.0, 1.0);
@@ -125,7 +125,7 @@ void Wav::rewriteBuffer(){
         }
     }else if (header.bits_per_sample == 16){
         signed short* shortBuffer = reinterpret_cast<signed short*>(buffer);
-        for(int i = 0; i<numSamples; i++){
+        for(int i = 0; i<samplesPerChannel; i++){
             for(int channel = 0; channel<header.num_channels; channel++){
                 //ensure sample is within double bounds
                 double sample = clamp(audioData[channel][i], -1.0, 1.0);
@@ -191,6 +191,22 @@ std::string Wav::getMetaData() const{
            << "\n" << "Channels: " << channel_output;
     
     return result.str();
+}
+
+short Wav::getAudioFormat() const{
+    return header.audio_format;
+}
+
+short Wav::getNumChannels() const{
+    return header.num_channels;
+}
+
+int Wav::getSampleRate() const{
+    return header.sample_rate;
+}
+
+int Wav::getSamplesPerChannel() const{
+    return samplesPerChannel;
 }
 
 Wav::~Wav(){
