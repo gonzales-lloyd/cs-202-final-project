@@ -1,9 +1,9 @@
 var searchData=
 [
-  ['getaudioformat_18',['getAudioFormat',['../classWav.html#aef3ebf99c34bedca486fdac918a8e37c',1,'Wav']]],
-  ['getheaderdata_19',['getHeaderData',['../classWav.html#ad9673c0c1897a2377ec116fe53db031d',1,'Wav']]],
-  ['getmetadata_20',['getMetaData',['../classWav.html#ad0bbd3fdc7653175bb3234d8ff5bdd15',1,'Wav']]],
-  ['getnumchannels_21',['getNumChannels',['../classWav.html#aaeb55047d4ebf44afc26b7c7940c221f',1,'Wav']]],
-  ['getsamplerate_22',['getSampleRate',['../classWav.html#a7859a484d7fd993db7344b8fc201d1da',1,'Wav']]],
-  ['getsamplesperchannel_23',['getSamplesPerChannel',['../classWav.html#ac0d88996c66dbf0845874ae579f66441',1,'Wav']]]
+  ['getaudioformat_19',['getAudioFormat',['../classWav.html#aef3ebf99c34bedca486fdac918a8e37c',1,'Wav']]],
+  ['getheaderdata_20',['getHeaderData',['../classWav.html#ad9673c0c1897a2377ec116fe53db031d',1,'Wav']]],
+  ['getmetadata_21',['getMetaData',['../classWav.html#ad0bbd3fdc7653175bb3234d8ff5bdd15',1,'Wav']]],
+  ['getnumchannels_22',['getNumChannels',['../classWav.html#aaeb55047d4ebf44afc26b7c7940c221f',1,'Wav']]],
+  ['getsamplerate_23',['getSampleRate',['../classWav.html#a7859a484d7fd993db7344b8fc201d1da',1,'Wav']]],
+  ['getsamplesperchannel_24',['getSamplesPerChannel',['../classWav.html#ac0d88996c66dbf0845874ae579f66441',1,'Wav']]]
 ];

@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['menulogic_51',['MenuLogic',['../classMenuLogic.html',1,'']]]
+  ['menulogic_52',['MenuLogic',['../classMenuLogic.html',1,'']]]
 ];

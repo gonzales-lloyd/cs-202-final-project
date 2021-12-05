@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['wav_52',['Wav',['../classWav.html',1,'']]],
-  ['wav_5fheader_53',['wav_header',['../structwav__header.html',1,'']]],
-  ['wavmanipulation_54',['WavManipulation',['../classWavManipulation.html',1,'']]]
+  ['wav_53',['Wav',['../classWav.html',1,'']]],
+  ['wav_5fheader_54',['wav_header',['../structwav__header.html',1,'']]],
+  ['wavmanipulation_55',['WavManipulation',['../classWavManipulation.html',1,'']]]
 ];
