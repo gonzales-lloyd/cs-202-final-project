@@ -65,6 +65,12 @@ public:
      */
     int getSamplesPerChannel() const;
     /**
+     * @brief Calculates the position of a sample in seconds based on the sample rate.
+     * 
+     * @return The integer position of the sample in audioData.
+     */
+    int secondAsSample(double sec) const;
+    /**
      * @brief Get the full metadata contained in the WAV header, returning a formatted string.
      * 
      * Does NOT fit assignment requirements, and is provided for debug.

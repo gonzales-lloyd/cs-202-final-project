@@ -215,6 +215,11 @@ int Wav::getSamplesPerChannel() const{
     return samplesPerChannel;
 }
 
+int Wav::secondAsSample(double sec) const{
+    int result = header.sample_rate*sec;
+    return result;
+}
+
 Wav::~Wav(){
     if(buffer != NULL){
         delete[] buffer;
