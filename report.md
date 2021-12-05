@@ -17,8 +17,8 @@ This is a **challenge level** project.
 
 ## Members and contributions
  - **Austin Zube** - Documentation, writeups
- - **Grant Pellegrini** - High-level processors
- - **Lloyd Gonzales** - Project structuring and setup (Doxyfile, makefile, folder structure); Wav class implementation; processor integration; main menu/`main.cpp`; Qt
+ - **Grant Pellegrini** - All processors
+ - **Lloyd Gonzales** - Project structuring and setup (Doxyfile, makefile, folder structure); Wav class implementation; processor integration; main menu logic; Qt
 
 ## Build instructions
 *Note: precompiled binaries for Linux are available under Releases. In addition, the documentation is available on Github Pages under https://gonzales-lloyd.github.io/cs-202-final-project/index.html (note that this link may change if Github Classroom is used).* 
@@ -31,14 +31,15 @@ To generate the GUI version of the program...
 ## UML diagram
 
 ## Known issues and missing functionality
-**Bugs**
+
+### Bugs
 - If the file name to `Wav::readFile()` is invalid, a segfault occurs
 - If the end time passed into `WavManipulation::echo()` is too large, the program hangs (other extreme inputs of correct data types may cause similar behavior)
-**Missing functionality**
-- Unsure what low-pass filter should sound like, but it is implemented according to the diagram sent in the Discord server
+### Design oversights
 - No protection against the length of audioData being changed by an external class, which would cause the Wav class to break when trying to rewrite the buffer to a file
 - No protection or checks if the header structure is different from expected
-- Does not reject non-PCM and non-8/16 bit data, when it can only support PCM and 8/16-bit data
+### Design oversights
+- Unsure what low-pass filter should sound like, but it is implemented according to the diagram sent in the Discord server
 - GUI does not run on Windows without additionally adding several DLL files must also be manually added to the executable folder and to \platforms\... (see https://stackoverflow.com/questions/20495620/qt-5-1-1-application-failed-to-start-because-platform-plugin-windows-is-missi); `windeployqt` fails to correctly add dependencies
 
 ## Challenges encountered
