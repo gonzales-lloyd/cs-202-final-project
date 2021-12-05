@@ -46,6 +46,7 @@ void Wav::readFile(const std::string &fileName){
 }
 
 void Wav::writeFile(const std::string &fileName){
+    rewriteBuffer();
     std::ofstream wav_file(fileName, std::ios::binary | std::ios::out);
     if(wav_file.is_open()){
         wav_file.write((char*)&header, sizeof(wav_header));

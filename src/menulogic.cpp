@@ -95,7 +95,6 @@ bool MenuLogic::promptSave(Wav &wav_obj){
     std::string newpath;
     std::cin >> newpath;
     try{
-        wav_obj.rewriteBuffer();
         wav_obj.writeFile(newpath);
         std::cout << "File \"" << newpath << "\" saved."
                     << "\n" << "============================================" << std::endl;
