@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['sample_5falignment_58',['sample_alignment',['../structwav__header.html#a2672b73c81973008677db6349fbc232a',1,'wav_header']]],
-  ['sample_5frate_59',['sample_rate',['../structwav__header.html#a0632019c676aa88f0351c0ab11461de0',1,'wav_header']]]
+  ['wav_5fsize_97',['wav_size',['../structwav__header.html#a89a86a26a94e726411e34517bfc9105e',1,'wav_header']]]
 ];

@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['readfile_17',['readFile',['../classWav.html#a1c4230cec49d30147a5b8a1950083f7c',1,'Wav']]],
-  ['readme_2emd_18',['README.md',['../README_8md.html',1,'']]]
+  ['normalize_31',['normalize',['../classWavManipulation.html#adbcf06c81dbd3d97914e23a1e996a1f1',1,'WavManipulation']]],
+  ['num_5fchannels_32',['num_channels',['../structwav__header.html#a625d84de0f598e50c072d725f6e3b6b8',1,'wav_header']]]
 ];

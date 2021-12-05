@@ -1,3 +1,9 @@
+/**
+ * @file menulogic.cpp
+ * @author Lloyd Gonzales (gonzales-lloyd)
+ * @brief Implementation file for the MenuLogic class.
+ */
+
 #include "menulogic.h"
 
 bool MenuLogic::cinFailCheck(){

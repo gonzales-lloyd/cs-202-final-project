@@ -9,10 +9,6 @@
  * @bug No protection or checks against the length of audioData being changed
  * @bug No protection or checks if the header structure is different from expected (or if a non-wav file is loaded)
  * 
- * Wav is a class that represents the audio data and header of a WAV file.
- * It also handles file I/O for the WAV file, providing an interface for interacting 
- * with header and buffer data. The header and buffer data is written and read 
- * according to the information provided at http://soundfile.sapp.org/doc/WaveFormat/.
  */
 
 #include <fstream>
@@ -25,7 +21,12 @@
 #ifndef WAV_H
 #define WAV_H
 /**
- * Class for representing a WAV file.
+ * @brief Class used for representing a WAV file.
+ * 
+ * Wav is a class that represents the audio data and header of a WAV file.
+ * It also handles file I/O for the WAV file, providing an interface for interacting 
+ * with header and buffer data. The header and buffer data is written and read 
+ * according to the information provided at http://soundfile.sapp.org/doc/WaveFormat/.
  */
 class Wav{
 public:

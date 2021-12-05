@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['cs_20202_20semester_20project_2c_20f21_62',['CS 202 Semester Project, F21',['../index.html',1,'']]]
+  ['bug_20list_100',['Bug List',['../bug.html',1,'']]]
 ];

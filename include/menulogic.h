@@ -1,10 +1,8 @@
 /**
  * @file wav.h
  * @author Lloyd Gonzales (gonzales-lloyd)
- * @brief Header file for the main menu logic.
+ * @brief Header file for the MenuLogic class.
  * 
- * MenuLogic holds all the relevant logic for getting input from the user through the 
- * console interface.
  */
 
 #include "wav.h"
@@ -14,6 +12,10 @@
 #ifndef MENULOGIC_H
 #define MENULOGIC_H
 
+/**
+ * @brief Class holding the relevant logic for the console interface, 
+ * including the main menu and prompting the user for inputs.
+ */
 class MenuLogic{
 private:
     static bool normalizeMenu(Wav &wav_obj);

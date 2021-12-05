@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['readfile_43',['readFile',['../classWav.html#a1c4230cec49d30147a5b8a1950083f7c',1,'Wav']]]
+  ['echo_68',['echo',['../classWavManipulation.html#a955909d5a87ae1b415914cd56998df18',1,'WavManipulation']]]
 ];

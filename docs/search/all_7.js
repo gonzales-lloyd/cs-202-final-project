@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['main_14',['main',['../main_8cpp.html#a0ddf1224851353fc92bfbff6f499fa97',1,'main.cpp']]],
-  ['main_2ecpp_15',['main.cpp',['../main_8cpp.html',1,'']]]
+  ['loadaudiodata_23',['loadAudioData',['../classWav.html#af2e77a4c0bba2a0bfab8af8fcc50e1b6',1,'Wav']]],
+  ['lowpass_24',['lowpass',['../classWavManipulation.html#a188f8f3f71efd98ab8a09c9a109f9f56',1,'WavManipulation']]]
 ];

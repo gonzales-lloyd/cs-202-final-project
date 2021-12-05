@@ -1,5 +1,6 @@
 var searchData=
 [
-  ['getbuffer_11',['getBuffer',['../classWav.html#a2daf07a90ed34789e3a1874973d9bd36',1,'Wav']]],
-  ['getbuffersize_12',['getBufferSize',['../classWav.html#a71fdfa1d9f5e7c1b86f07bbff4249dca',1,'Wav']]]
+  ['fmt_5fchunk_5fsize_14',['fmt_chunk_size',['../structwav__header.html#a5fb4363d52bbff51ca2e8884408208c6',1,'wav_header']]],
+  ['fmt_5fheader_15',['fmt_header',['../structwav__header.html#a4039d1e8e91d7940aa45a29aad27b4ce',1,'wav_header']]],
+  ['format_16',['format',['../structwav__header.html#a2fba49913d0b8a7f5054226fa8d1cc47',1,'wav_header']]]
 ];

@@ -1,5 +1,6 @@
 var searchData=
 [
-  ['sample_5falignment_19',['sample_alignment',['../structwav__header.html#a2672b73c81973008677db6349fbc232a',1,'wav_header']]],
-  ['sample_5frate_20',['sample_rate',['../structwav__header.html#a0632019c676aa88f0351c0ab11461de0',1,'wav_header']]]
+  ['readfile_33',['readFile',['../classWav.html#a1c4230cec49d30147a5b8a1950083f7c',1,'Wav']]],
+  ['readme_2emd_34',['README.md',['../README_8md.html',1,'']]],
+  ['rewritebuffer_35',['rewriteBuffer',['../classWav.html#af9458bb1ec46a4cf5c0de1af136fa9aa',1,'Wav']]]
 ];
