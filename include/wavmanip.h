@@ -16,12 +16,13 @@
 
 #include "wav.h"
 #include <algorithm>
+#include <cmath>
 
 class WavManipulation{
 public:
     static void adjust_gain(Wav &wav_obj, float scale); 
-    static void echo(Wav &wav_obj, double gain, int delay);
+    static void echo(Wav& wav_obj, double start_sec, double end_sec, double decay_factor, double delay);
     static void normalize(Wav &wav_obj);
     static void compress(Wav &wav_obj, double threshold, double attenuation);
-    static void lowpass(Wav &wav_obj, int delay, double prop, double gain);
+    static void lowpass(Wav &wav_obj, int delay, double gain);
 };

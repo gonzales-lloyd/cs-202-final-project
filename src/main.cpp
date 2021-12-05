@@ -84,7 +84,7 @@ int consoleLoop(){
                 std::cout << "Enter what you want the gain to be, less than 1: ";
                 std::cin >> gain;
                 if(cinFailCheck()){continue;}
-                WavManipulation::echo(wav_obj, gain, delay);
+                WavManipulation::echo(wav_obj, gain, delay, 0.5, 0.5);
             }else if(userInput == "3"){
                 double gain;
 
@@ -153,8 +153,9 @@ int consoleLoop(){
  * Main function.
  */
 int main (int argc, char *argv[]){
-    return consoleLoop();
+    //return consoleLoop();
 
+    /*
     std::string path;
     if(argc != 2){
         std::cerr << "./wav_manager <wav filepath>" << std::endl;
@@ -162,6 +163,21 @@ int main (int argc, char *argv[]){
     }else{
         path = argv[1];
     }
+    */
+
+    std::string path = "test_files/echotest.wav";
+
+    Wav wav_obj;
+    wav_obj.readFile(path);
+    //WavManipulation::normalize(wav_obj);
+    WavManipulation::echo(wav_obj, 0.0, 2.5, 0.5, -1);
+    //WavManipulation::adjust_gain(wav_obj,10);
+
+    wav_obj.rewriteBuffer();
+    wav_obj.writeFile("out.wav");
+    //a.save("out.wav");
+
+
     /*
     Wav wav_obj;
     wav_obj.readFile(path);
@@ -184,18 +200,5 @@ int main (int argc, char *argv[]){
             wav_obj.audioData[channel][i] *= 0.1;
         }
     } */
-
-    
-
-    
-    Wav wav_obj;
-    wav_obj.readFile(path);
-    //WavManipulation::normalize(wav_obj);
-    WavManipulation::echo(wav_obj, 0.5, 25000);
-
-    wav_obj.rewriteBuffer();
-    wav_obj.writeFile("out.wav");
-    //a.save("out.wav");
-    
     return 0;
 }

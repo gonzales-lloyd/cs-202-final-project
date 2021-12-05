@@ -15,32 +15,62 @@ void WavManipulation::adjust_gain(Wav &wav_obj, float scale){
     }
 }
 
-void WavManipulation::echo(Wav& wav_obj, double gain, int delay){
+void WavManipulation::echo(Wav& wav_obj, double start_sec, double end_sec, double decay_factor, double delay){
     //where delay is in samples!!
     auto temp = wav_obj.audioData;
 
     /**
      * for multiple iterations:
      * - calculate the number of iterations from the delay and the decay factor
-     *   (i.e. how many delays is it going to take before the extra echos are 0?)
-     * - if decay factor > 1, calculate the number of delays between the end of the
-     *   audio and the start of the echoed range and use that as the iteration count
-     * - go if i > iteration*delay then temp[channel][i] += iteration_scale*temp[channel][i-delay*iteratoin]
+     *   (i.e. how many delays is it going to take before we hit the end?)
+     * - then temp[channel][i] += iteration_scale*temp[channel][i-delay*iteration]
      * 
      */
-    for(int i = 0; i<wav_obj.getSamplesPerChannel(); i++){
-        for(int channel = 0; channel<wav_obj.getNumChannels(); channel++){
-            if (i > delay){ 
-			    temp[channel][i] += gain * temp[channel][i - delay];
-		    }
-		}
+
+    /**
+     * steps:
+     * 
+     * isolate echoed audio using start_sec and end_sec
+     * go to the array position of end_sec+delay
+     * multiply echoed audio by decay_factor*iteration and place in temp[][]
+     * (note that for any given iteration, the original audio is located at current_pos - ((iteration*iteration_length)+selection_length))
+     * go to the end of this iteration+delay
+     * repeat
+     * add temp to audioData (or just do in-place)
+     */
+
+    //calculate number of iterations
+    //length of each iteration is delay+(end_sec-start-sec)
+    //so the iteration count is equal to (samplesPerChannel-end_sec)/iteration_length rounded up
+
+    int iterations = 0;
+    int selection_length = wav_obj.secondAsSample(end_sec-start_sec);
+    int iteration_length = wav_obj.secondAsSample(delay+(end_sec-start_sec)); //in samples
+    int first_iteration_position = wav_obj.secondAsSample(end_sec+delay);
+    if(first_iteration_position > wav_obj.getSamplesPerChannel()){
+        //then the first iteration wouldn't even be in the length of the audio, so do nothing
+        iterations = 0;
+    }else{
+        iterations = ceil((double)(wav_obj.getSamplesPerChannel()-first_iteration_position)/iteration_length);
+    }
+
+    for(int iteration = 0; iteration<iterations; iteration++){
+        double iteration_scale = std::pow(decay_factor, iteration+1);
+        int iteration_start_position = first_iteration_position + (iteration*iteration_length);
+
+        for(int i = iteration_start_position; i<wav_obj.getSamplesPerChannel(); i++){
+            int echo_selection = i - ((iteration*iteration_length)+selection_length);
+            for(int channel = 0; channel<wav_obj.getNumChannels(); channel++){
+                if(i>0 && echo_selection>0){
+                    temp[channel][i] += iteration_scale * wav_obj.audioData[channel][echo_selection];
+                }
+            }
+        }
     }
 
     for(int i = 0; i<wav_obj.getSamplesPerChannel(); i++){
         for(int channel = 0; channel<wav_obj.getNumChannels(); channel++){
-            if(i+delay < wav_obj.getSamplesPerChannel()){
-                wav_obj.audioData[channel][i] += temp[channel][i + delay];
-            }
+            wav_obj.audioData[channel][i] += temp[channel][i];
 		}
     }
 }
@@ -83,22 +113,23 @@ void WavManipulation::compress(Wav &wav_obj, double threshold, double attenuatio
     }
 }
 
-void WavManipulation::lowpass(Wav &wav_obj, int delay, double prop, double gain){
+void WavManipulation::lowpass(Wav &wav_obj, int delay, double gain){
+    //based on Dr. Lancaster's diagram, low-pass is just a one-iteration echo?
+    //uses grant's one-iteration echo algorithm
     auto temp = wav_obj.audioData;
 
     for(int i = 0; i<wav_obj.getSamplesPerChannel(); i++){
         for(int channel = 0; channel<wav_obj.getNumChannels(); channel++){
             if (i > delay){ 
-			    temp[channel][i] += (prop * temp[channel][i - delay]);
-                temp[channel][i] *= gain;
+			    temp[channel][i] += gain * temp[channel][i - delay];
 		    }
 		}
     }
 
     for(int i = 0; i<wav_obj.getSamplesPerChannel(); i++){
         for(int channel = 0; channel<wav_obj.getNumChannels(); channel++){
-            if(i+delay < wav_obj.getNumChannels()){
-                wav_obj.audioData[channel][i] = temp[channel][i];
+            if(i+delay < wav_obj.getSamplesPerChannel()){
+                wav_obj.audioData[channel][i] += temp[channel][i + delay];
             }
 		}
     }
