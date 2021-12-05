@@ -109,8 +109,8 @@
            <string>...</string>
           </property>
           <property name="icon">
-           <iconset>
-            <normaloff>OneDrive_Folder_Icon.svg.png</normaloff>OneDrive_Folder_Icon.svg.png</iconset>
+           <iconset resource="resources.qrc">
+            <normaloff>:/images/OneDrive_Folder_Icon.svg.png</normaloff>:/images/OneDrive_Folder_Icon.svg.png</iconset>
           </property>
          </widget>
         </item>
@@ -131,7 +131,9 @@
    </item>
   </layout>
  </widget>
- <resources/>
+ <resources>
+  <include location="resources.qrc"/>
+ </resources>
  <connections>
   <connection>
    <sender>buttonBox</sender>

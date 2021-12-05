@@ -1,0 +1,5 @@
+<RCC>
+    <qresource prefix="/images">
+        <file>OneDrive_Folder_Icon.svg.png</file>
+    </qresource>
+</RCC>

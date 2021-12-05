@@ -1,6 +1,7 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
-#include "ui_gain.h"
+
+#include "GainDialog.h"
 
 #include <QtWidgets/QDialog>
 
@@ -17,13 +18,8 @@ MainWindow::~MainWindow()
 }
 void MainWindow::on_openGainAdjustDialog_clicked()
 {
-    QDialog *gainDialog = new QDialog();
-
-    Ui_GainDialog gainUi;
-    gainUi.setupUi(gainDialog);
-
-    gainDialog->show();
-
+    auto gain = new GainDialog(this);
+    gain->show();
 }
 
 //https://stackoverflow.com/questions/13116863/qt-show-modal-dialog-ui-on-menu-item-click
