@@ -19,8 +19,10 @@ void Wav::readFile(const std::string &fileName){
         buffer = new unsigned char[header.buffer_size]; //allocate memory for the buffer
         wav_file.read((char*)buffer, header.buffer_size); //read remainder of file equal to buffer size into buffer
         loadAudioData();
+        wav_file.clear();
         wav_file.close();
     }else{
+        wav_file.clear();
         throw std::runtime_error("Couldn't open file");
     }
 }
