@@ -7,24 +7,6 @@
 
 #include "wav.h"
 
-/**
- * How the public implementation (AudioFile.h) works:
- * 
- * 1. Define a 2D vector std::vector<std::vector<T>> that holds all of the samples. 
- *    This vector is split into vector[channel][sampleIndex].
- * 2. Use the header data correctly to do things
- * 3. Validate the header data
- * 4. Once done, read through the number of bytes specified in the header
- *    and convert everything to a double
- */
-
-/**
- * Read the input file and store WAV information to `header` and `buffer`.
- * THIS SHOULD BE THE CONSTRUCTOR SO THE WAV HEADER CAN'T BE READ BEFOREHAND
- * No error-checking or error output is currently provided.
- * 
- * @param fileName The input file path.
- */
 void Wav::readFile(const std::string &fileName){
     std::ifstream wav_file(fileName, std::ios::binary | std::ios::in);
     if(wav_file.is_open()){
@@ -39,13 +21,6 @@ void Wav::readFile(const std::string &fileName){
     }
 }
 
-/**
- * Write to the output file using the WAV information stored in `header` and `buffer`.
- * 
- * No error-checking or error output is currently provided.
- * 
- * @param fileName The output file path.
- */
 void Wav::writeFile(const std::string &fileName){
     std::ofstream wav_file(fileName, std::ios::binary | std::ios::out);
     if(wav_file.is_open()){
@@ -218,12 +193,6 @@ std::string Wav::getMetaData() const{
     return result.str();
 }
 
-/**
- * Destructor for the Wav class.
- * 
- * Ensures that if the Wav class's destructor is called, the memory 
- * allocated for the buffer is deallocated as well.
- */
 Wav::~Wav(){
     if(buffer != NULL){
         delete[] buffer;
