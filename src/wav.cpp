@@ -219,24 +219,6 @@ std::string Wav::getMetaData() const{
 }
 
 /**
- * Get the full contents of the buffer (i.e. audio data).
- * 
- * @return The buffer.
- */
-unsigned char* Wav::getBuffer(){
-    return buffer;
-}
-
-/**
- * Get the size of the buffer (i.e. audio data).
- * 
- * @return The buffer.
- */
-int Wav::getBufferSize() const{
-    return header.buffer_size;
-}
-
-/**
  * Destructor for the Wav class.
  * 
  * Ensures that if the Wav class's destructor is called, the memory 

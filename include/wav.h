@@ -65,14 +65,6 @@ public:
      */
     void writeFile(const std::string &fileName);
     /**
-     * Get the size of the buffer.
-     */
-    int getBufferSize() const;
-    /**
-     * Return the buffer.
-     */
-    unsigned char* getBuffer();
-    /**
      * Class destructor.
      */
     ~Wav();
