@@ -33,6 +33,12 @@ public:
      * is `audioData[sample][channel]`. 
      */
     std::vector<std::vector<double>> audioData;
+    /**
+     * @brief Flag denoting whether a file has been successfully loaded or not.
+     * 
+     * A Wav object should generally not be operated on until this is `true`.
+     */
+    bool fileLoaded = false;
 private:
     wav_header header;
     unsigned char* buffer; //i.e. the sound data after the header - only used for file i/o
@@ -40,7 +46,6 @@ private:
     std::string fileName;
     
     int samplesPerChannel; //samples per channel - must be updated whenever a length-modifying action happens
-    bool fileLoaded = false;
 public:
     /**
      * @brief Get the audio format, where 1 indicates PCM and others indicate compression.
