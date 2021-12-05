@@ -76,8 +76,12 @@ $(function() {
 <dt>File <a class="el" href="wav_8h.html">wav.h</a>  </dt>
 <dd><p class="startdd"><a class="anchor" id="_bug000003"></a>If the file name to readFile() is invalid, this causes a segfault </p>
 <p class="interdd">No protection or checks against the length of audioData being changed </p>
-<p class="enddd">No protection or checks if the header structure is different from expected (or if a non-wav file is loaded)</p>
+<p class="enddd">No protection or checks if the header structure is different from expected (or if a non-wav file is loaded) </p>
 </dd>
+<dt>Member <a class="el" href="classWav.html#a4444cca814cc91b3dc6a3b70b202d196">Wav::audioData</a>  </dt>
+<dd><a class="anchor" id="_bug000004"></a>Modifying the length of the vectors causes buffer rewriting to fail. </dd>
+<dt>Member <a class="el" href="classWavManipulation.html#a955909d5a87ae1b415914cd56998df18">WavManipulation::echo</a>  (<a class="el" href="classWav.html" title="Class used for representing a WAV file.">Wav</a> &amp;wav_obj, double start_sec, double end_sec, double decay_factor, double delay)</dt>
+<dd><a class="anchor" id="_bug000005"></a>Excessive values for <code>end_sec</code> appear to cause the program to stall.</dd>
 </dl>
 </div></div><!-- contents -->
 </div><!-- PageDoc -->

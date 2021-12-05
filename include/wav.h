@@ -30,6 +30,14 @@
  */
 class Wav{
 public:
+    /**
+     * @brief The vector containing the audio data as samples from -1.0 to 1.0.
+     * 
+     * @bug Modifying the length of the vectors causes buffer rewriting to fail.
+     * 
+     * This vector uses doubles to hold all of the audio data. The format of the vector 
+     * is `audioData[sample][channel]`. 
+     */
     std::vector<std::vector<double>> audioData;
 private:
     wav_header header;

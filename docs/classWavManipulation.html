@@ -77,14 +77,19 @@ $(function() {
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
 <tr class="memitem:a1b177ce50ae1ecc0b18f356bdd50efd6"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classWavManipulation.html#a1b177ce50ae1ecc0b18f356bdd50efd6">adjust_gain</a> (<a class="el" href="classWav.html">Wav</a> &amp;wav_obj, float scale)</td></tr>
+<tr class="memdesc:a1b177ce50ae1ecc0b18f356bdd50efd6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Scale the amplitude of the audio data contained in a <a class="el" href="classWav.html" title="Class used for representing a WAV file.">Wav</a> object.  <a href="classWavManipulation.html#a1b177ce50ae1ecc0b18f356bdd50efd6">More...</a><br /></td></tr>
 <tr class="separator:a1b177ce50ae1ecc0b18f356bdd50efd6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a955909d5a87ae1b415914cd56998df18"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classWavManipulation.html#a955909d5a87ae1b415914cd56998df18">echo</a> (<a class="el" href="classWav.html">Wav</a> &amp;wav_obj, double start_sec, double end_sec, double decay_factor, double delay)</td></tr>
+<tr class="memdesc:a955909d5a87ae1b415914cd56998df18"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generate an echo of the selected audio in a <a class="el" href="classWav.html" title="Class used for representing a WAV file.">Wav</a> object.  <a href="classWavManipulation.html#a955909d5a87ae1b415914cd56998df18">More...</a><br /></td></tr>
 <tr class="separator:a955909d5a87ae1b415914cd56998df18"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:adbcf06c81dbd3d97914e23a1e996a1f1"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classWavManipulation.html#adbcf06c81dbd3d97914e23a1e996a1f1">normalize</a> (<a class="el" href="classWav.html">Wav</a> &amp;wav_obj)</td></tr>
+<tr class="memdesc:adbcf06c81dbd3d97914e23a1e996a1f1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Normalize the audio of a <a class="el" href="classWav.html" title="Class used for representing a WAV file.">Wav</a> object.  <a href="classWavManipulation.html#adbcf06c81dbd3d97914e23a1e996a1f1">More...</a><br /></td></tr>
 <tr class="separator:adbcf06c81dbd3d97914e23a1e996a1f1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7c67647940fcf58baaf3679156d8f078"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classWavManipulation.html#a7c67647940fcf58baaf3679156d8f078">compress</a> (<a class="el" href="classWav.html">Wav</a> &amp;wav_obj, double threshold, double attenuation)</td></tr>
+<tr class="memdesc:a7c67647940fcf58baaf3679156d8f078"><td class="mdescLeft">&#160;</td><td class="mdescRight">Compress audio that exceeds a certain threshold in a <a class="el" href="classWav.html" title="Class used for representing a WAV file.">Wav</a> object.  <a href="classWavManipulation.html#a7c67647940fcf58baaf3679156d8f078">More...</a><br /></td></tr>
 <tr class="separator:a7c67647940fcf58baaf3679156d8f078"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a188f8f3f71efd98ab8a09c9a109f9f56"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classWavManipulation.html#a188f8f3f71efd98ab8a09c9a109f9f56">lowpass</a> (<a class="el" href="classWav.html">Wav</a> &amp;wav_obj, int delay, double gain)</td></tr>
+<tr class="memdesc:a188f8f3f71efd98ab8a09c9a109f9f56"><td class="mdescLeft">&#160;</td><td class="mdescRight">Apply a low-pass filter to the audio data in a <a class="el" href="classWav.html" title="Class used for representing a WAV file.">Wav</a> object.  <a href="classWavManipulation.html#a188f8f3f71efd98ab8a09c9a109f9f56">More...</a><br /></td></tr>
 <tr class="separator:a188f8f3f71efd98ab8a09c9a109f9f56"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
@@ -132,6 +137,15 @@ Static Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Scale the amplitude of the audio data contained in a <a class="el" href="classWav.html" title="Class used for representing a WAV file.">Wav</a> object. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">wav_obj</td><td>A <a class="el" href="classWav.html" title="Class used for representing a WAV file.">Wav</a> object. </td></tr>
+    <tr><td class="paramname">scale</td><td>The factor to scale the audio by. </td></tr>
+  </table>
+  </dd>
+</dl>
+
 </div>
 </div>
 <a id="a7c67647940fcf58baaf3679156d8f078"></a>
@@ -173,6 +187,18 @@ Static Public Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Compress audio that exceeds a certain threshold in a <a class="el" href="classWav.html" title="Class used for representing a WAV file.">Wav</a> object. </p>
+<p>For example: If the threshold is set to be 90% of the maximum amplitude and the attenuation factor is set to 0.5, then a sample that is 110% of the maximum amplitude would be attenuated to 100%.</p>
+<p>Note that both <code>threshold</code> and <code>attenuation</code> are clamped to 0.0 and 1.0. If either variable goes outside these bounds, then they are automatically set to either the maximum or minimum bound as necessary.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">wav_obj</td><td>A <a class="el" href="classWav.html" title="Class used for representing a WAV file.">Wav</a> object. </td></tr>
+    <tr><td class="paramname">threshold</td><td>The threshold, as a decimal from 0 to 1. </td></tr>
+    <tr><td class="paramname">attenuation</td><td>The scaling factor of audio that exceeds the threshold, as a decimal from 0 to 1. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -227,12 +253,22 @@ Static Public Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>for multiple iterations:</p><ul>
-<li>calculate the number of iterations from the delay and the decay factor (i.e. how many delays is it going to take before we hit the end?)</li>
-<li>then temp[channel][i] += iteration_scale*temp[channel][i-delay*iteration]</li>
-</ul>
-<p>steps:</p>
-<p>isolate echoed audio using start_sec and end_sec go to the array position of end_sec+delay multiply echoed audio by decay_factor*iteration and place in temp[][] (note that for any given iteration, the original audio is located at current_pos - ((iteration*iteration_length)+selection_length)) go to the end of this iteration+delay repeat add temp to audioData (or just do in-place)</p>
+
+<p>Generate an echo of the selected audio in a <a class="el" href="classWav.html" title="Class used for representing a WAV file.">Wav</a> object. </p>
+<dl class="bug"><dt><b><a class="el" href="bug.html#_bug000005">Bug:</a></b></dt><dd>Excessive values for <code>end_sec</code> appear to cause the program to stall.</dd></dl>
+<p>This implementation does not behave like the Audacity implementation or the implementation used in Dr. Lancaster's echo videos.</p>
+<p>To generate an echo, this function isolates the audio selected by the <code>start_sec</code> and <code>end_sec</code> parameters, and then starts repeating the audio (typically softer each time) after the end of the audio selection. The delay allows the echoes to overlap (if negative) or be followed by silence on each echo (if positive).</p>
+<p>Note that the decay factor is multiplicative - after one echo, a decay factor of 0.5 causes the next echo to have an amplitude 0.25 times that of the original selection.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">wav_obj</td><td>A <a class="el" href="classWav.html" title="Class used for representing a WAV file.">Wav</a> object. </td></tr>
+    <tr><td class="paramname">start_sec</td><td>The start time of the selection, in seconds. </td></tr>
+    <tr><td class="paramname">end_sec</td><td>The end time of the selection, in seconds. </td></tr>
+    <tr><td class="paramname">decay_factor</td><td>The scaling factor of each echo. </td></tr>
+    <tr><td class="paramname">delay</td><td>The delay between each echo, in seconds. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -276,6 +312,17 @@ Static Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Apply a low-pass filter to the audio data in a <a class="el" href="classWav.html" title="Class used for representing a WAV file.">Wav</a> object. </p>
+<p>We're not quite sure if this works, but it adheres to the diagram posted in the CS202 Discord channel.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">wav_obj</td><td>A <a class="el" href="classWav.html" title="Class used for representing a WAV file.">Wav</a> object. </td></tr>
+    <tr><td class="paramname">delay</td><td>The delay of the filter in samples (not seconds). </td></tr>
+    <tr><td class="paramname">gain</td><td>The gain of delayed samples. </td></tr>
+  </table>
+  </dd>
+</dl>
+
 </div>
 </div>
 <a id="adbcf06c81dbd3d97914e23a1e996a1f1"></a>
@@ -301,6 +348,15 @@ Static Public Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Normalize the audio of a <a class="el" href="classWav.html" title="Class used for representing a WAV file.">Wav</a> object. </p>
+<p>In other words, identify the sample with the highest amplitude, and scale the rest of the audio such that the identified sample has the maximum amplitude.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">wav_obj</td><td>The <a class="el" href="classWav.html" title="Class used for representing a WAV file.">Wav</a> object to normalize. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>

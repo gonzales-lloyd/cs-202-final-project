@@ -124,6 +124,7 @@ Static Public Member Functions</h2></td></tr>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
 <tr class="memitem:a4444cca814cc91b3dc6a3b70b202d196"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::vector&lt; double &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classWav.html#a4444cca814cc91b3dc6a3b70b202d196">audioData</a></td></tr>
+<tr class="memdesc:a4444cca814cc91b3dc6a3b70b202d196"><td class="mdescLeft">&#160;</td><td class="mdescRight">The vector containing the audio data as samples from -1.0 to 1.0.  <a href="classWav.html#a4444cca814cc91b3dc6a3b70b202d196">More...</a><br /></td></tr>
 <tr class="separator:a4444cca814cc91b3dc6a3b70b202d196"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
@@ -333,15 +334,6 @@ template&lt;typename T &gt; </div>
 </div><div class="memdoc">
 
 <p>Loads all audio data into the audioData buffer as doubles. </p>
-<p>This code is adapted from Dr. Lancaster's video.</p>
-<p>A previous commmit used methodology from <a href="https://github.com/adamstark/AudioFile/blob/master/AudioFile.h">https://github.com/adamstark/AudioFile/blob/master/AudioFile.h</a>. This originally manually converted the bytes in <code>buffer</code> into individual int16s or 32s. It has been replaced with Dr. Lancaster's array cast method instead.</p>
-<p>The following multiline comment describes the old method for forming the 16-bit samples. -Lloyd Gonzales</p>
-<p>Since our buffer is stored as a series of signed shorts, we'd need to get the two bytes and convert it to its equivalent integer value manually. To do so, assuming LE (which should be true), then we first get the most significant byte and shift it 8 bits down.</p>
-<p>Pretend our sample is as follows: SamplePos v 00100100 10001000 (36) (136)</p>
-<p>To combine these two values, we can't just add them together. Instead, we start by declaring a 16-bit signed short: <code>signed short data;</code> 00000000 00000000</p>
-<p>For the left side of the expression, we take the second byte and treat it as a short: <code>signed short data = buffer[samplePos+1] &lt;&lt; 8</code> 00000000 10001000 -&gt; 10001000 00000000 (136) (-30720)</p>
-<p>Then, in the right sie of the expression, we OR it with the first byte: `signed short data = data | buffer[samplePos] 10001000 00000000 -&gt; 10001000 00100100 (-30720) (-30684)</p>
-<p>The process of combining the two bytes LE is complete. The process can be used similarly for other byte sizes, as well.</p>
 
 </div>
 </div>
@@ -449,6 +441,10 @@ template&lt;typename T &gt; </div>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>The vector containing the audio data as samples from -1.0 to 1.0. </p>
+<dl class="bug"><dt><b><a class="el" href="bug.html#_bug000004">Bug:</a></b></dt><dd>Modifying the length of the vectors causes buffer rewriting to fail.</dd></dl>
+<p>This vector uses doubles to hold all of the audio data. The format of the vector is audioData[sample][channel]. </p>
 
 </div>
 </div>

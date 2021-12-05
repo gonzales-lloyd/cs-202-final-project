@@ -39,7 +39,7 @@ void Wav::writeFile(const std::string &fileName){
 }
 
 void Wav::loadAudioData(){
-    /**
+    /*
      * This code is adapted from Dr. Lancaster's video.
      * 
      * A previous commmit used methodology from https://github.com/adamstark/AudioFile/blob/master/AudioFile.h.
@@ -48,9 +48,9 @@ void Wav::loadAudioData(){
      * 
      * The following multiline comment describes the old method for forming the 16-bit samples.
      * -Lloyd Gonzales
-     */
+    */
 
-    /**
+    /*
      * Since our buffer is stored as a series of signed shorts, we'd need
      * to get the two bytes and convert it to its equivalent integer value
      * manually. To do so, assuming LE (which should be true), then we first
@@ -79,7 +79,7 @@ void Wav::loadAudioData(){
      * 
      * The process of combining the two bytes LE is complete. The process can be used similarly
      * for other byte sizes, as well.
-     */
+    */
 
     //Prepare vector to support the number of channels ahead of time
     //Note that the vector is audioData[channel][sample number]

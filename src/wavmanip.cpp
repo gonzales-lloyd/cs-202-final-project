@@ -16,18 +16,9 @@ void WavManipulation::adjust_gain(Wav &wav_obj, float scale){
 }
 
 void WavManipulation::echo(Wav& wav_obj, double start_sec, double end_sec, double decay_factor, double delay){
-    //where delay is in samples!!
     auto temp = wav_obj.audioData;
 
-    /**
-     * for multiple iterations:
-     * - calculate the number of iterations from the delay and the decay factor
-     *   (i.e. how many delays is it going to take before we hit the end?)
-     * - then temp[channel][i] += iteration_scale*temp[channel][i-delay*iteration]
-     * 
-     */
-
-    /**
+    /*
      * steps:
      * 
      * isolate echoed audio using start_sec and end_sec
@@ -37,7 +28,7 @@ void WavManipulation::echo(Wav& wav_obj, double start_sec, double end_sec, doubl
      * go to the end of this iteration+delay
      * repeat
      * add temp to audioData (or just do in-place)
-     */
+    */
 
     //calculate number of iterations
     //length of each iteration is delay+(end_sec-start-sec)

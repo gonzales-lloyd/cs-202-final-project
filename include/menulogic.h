@@ -28,6 +28,11 @@ private:
 
     static bool promptSave(Wav &wav_obj);
 public:
+    /**
+     * @brief The main context of the console-based program.
+     * 
+     * @return 0 on success.
+     */
     static int consoleLoop();
 };
 #endif

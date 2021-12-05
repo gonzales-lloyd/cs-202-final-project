@@ -55,12 +55,45 @@ public:
      * @param wav_obj A Wav object.
      * @param start_sec The start time of the selection, in seconds.
      * @param end_sec The end time of the selection, in seconds.
-     * @param decay_factor 
-     * @param delay 
+     * @param decay_factor The scaling factor of each echo.
+     * @param delay The delay between each echo, in seconds.
      */
     static void echo(Wav& wav_obj, double start_sec, double end_sec, double decay_factor, double delay);
+    /**
+     * @brief Normalize the audio of a Wav object.
+     * 
+     * In other words, identify the sample with the highest amplitude, and scale the rest of the audio 
+     * such that the identified sample has the maximum amplitude.
+     * 
+     * @param wav_obj The Wav object to normalize.
+     */
     static void normalize(Wav &wav_obj);
+    /**
+     * @brief Compress audio that exceeds a certain threshold in a Wav object.
+     * 
+     * For example: If the threshold is set to be 90% of the maximum amplitude and the attenuation
+     * factor is set to 0.5, then a sample that is 110% of the maximum amplitude would be 
+     * attenuated to 100%. 
+     * 
+     * Note that both `threshold` and `attenuation` are clamped to 0.0 and 1.0. If either variable
+     * goes outside these bounds, then they are automatically set to either the maximum or minimum bound
+     * as necessary.
+     * 
+     * @param wav_obj A Wav object.
+     * @param threshold The threshold, as a decimal from 0 to 1.
+     * @param attenuation The scaling factor of audio that exceeds the threshold, as a decimal from 0 to 1.
+     */
     static void compress(Wav &wav_obj, double threshold, double attenuation);
+    /**
+     * @brief Apply a low-pass filter to the audio data in a Wav object.
+     * 
+     * We're not quite sure if this works, but it adheres to the diagram posted in the
+     * CS202 Discord channel.
+     * 
+     * @param wav_obj A Wav object.
+     * @param delay The delay of the filter in samples (not seconds).
+     * @param gain The gain of delayed samples.
+     */
     static void lowpass(Wav &wav_obj, int delay, double gain);
 };
 
