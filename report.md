@@ -32,7 +32,8 @@ To generate the GUI version of the program...
 
 ## Known issues and missing functionality
 **Bugs**
-- If the file name to `readFile()` is invalid, a segfault occurs
+- If the file name to `Wav::readFile()` is invalid, a segfault occurs
+- If the end time passed into `WavManipulation::echo()` is too large, the program hangs (other extreme inputs of correct data types may cause similar behavior)
 **Missing functionality**
 - Unsure what low-pass filter should sound like, but it is implemented according to the diagram sent in the Discord server
 - No protection against the length of audioData being changed by an external class, which would cause the Wav class to break when trying to rewrite the buffer to a file
