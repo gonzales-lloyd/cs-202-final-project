@@ -119,6 +119,16 @@ public:
      */
     void writeFile(const std::string &fileName);
     /**
+     * @brief Check the header strings to see if it appears valid.
+     * 
+     * This is done by checking the individual characters of the chunk headers, which
+     * are "RIFF", "WAVE", "fmt ", and "data".
+     * 
+     * @return true if the chunk headers appear to be valid.
+     * @return false if the chunk headers don't appear to be valid.
+     */
+    bool checkHeader() const;
+    /**
      * Class destructor.
      */
     ~Wav();

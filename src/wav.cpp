@@ -11,13 +11,32 @@
 
 #include "wav.h"
 
+bool Wav::checkHeader() const{
+    bool riff_good = (header.chunk_id[0] == 'R' && header.chunk_id[1] == 'I' && header.chunk_id[2] == 'F' && header.chunk_id[3] == 'F');
+    bool format_good = (header.format[0] == 'W' && header.format[1] == 'A' && header.format[2] == 'V' && header.format[3] == 'E');
+    bool fmt_header_good = (header.fmt_header[0] == 'f' && header.fmt_header[1] == 'm' && header.fmt_header[2] == 't' && header.fmt_header[3] == ' ');
+    bool data_good = (header.data_header[0] == 'd' && header.data_header[1] == 'a' && header.data_header[2] == 't' && header.data_header[3] == 'a');
+    
+    if(riff_good && format_good && fmt_header_good && data_good){
+        return true;
+    }
+    return false;
+}
+
 void Wav::readFile(const std::string &fileName){
     std::ifstream wav_file(fileName, std::ios::binary | std::ios::in);
     if(wav_file.is_open()){
         this->fileName = fileName;
         wav_file.read((char*)&header, sizeof(wav_header)); //read into `header` by reading a number of bytes equivalent to the size of the struct
+        if(!checkHeader()){
+            //alright, semantically speaking this isn't an exception
+            //but this appears to be the simplest way to kick out the user
+            throw std::runtime_error("This doesn't appear to be a WAV file! (The header data does not appear to be formatted as expected.)");
+        }
+        
         buffer = new unsigned char[header.buffer_size]; //allocate memory for the buffer
         wav_file.read((char*)buffer, header.buffer_size); //read remainder of file equal to buffer size into buffer
+        
         loadAudioData();
         wav_file.clear();
         wav_file.close();
@@ -115,7 +134,7 @@ void Wav::loadAudioData(){
         }
     }else{
         //alright, semantically speaking this isn't an exception
-        //but i believe this is the simplest way to kick out the user
+        //but this appears to be the simplest way to kick out the user
         throw std::runtime_error("This program only supports 8- and 16-bit audio!");
     }
 }
