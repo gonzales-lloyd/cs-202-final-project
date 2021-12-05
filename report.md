@@ -16,9 +16,9 @@ A program for basic processing on 8-bit and 16-bit WAV files.
 This is a **challenge level** project.
 
 ## Members and contributions
- - **Austin Zube**
- - **Grant Pellegrini**
- - **Lloyd Gonzales**
+ - **Austin Zube** - Documentation, writeups
+ - **Grant Pellegrini** - High-level processors
+ - **Lloyd Gonzales** - Project structuring and setup (Doxyfile, makefile, folder structure); Wav class implementation; processor integration; main menu/`main.cpp`; Qt
 
 ## Build instructions
 *Note: precompiled binaries for Linux are available under Releases. In addition, the documentation is available on Github Pages under https://gonzales-lloyd.github.io/cs-202-final-project/index.html (note that this link may change if Github Classroom is used).* 
@@ -31,5 +31,9 @@ To generate the GUI version of the program...
 ## UML diagram
 
 ## Known issues and missing functionality
+- No protection against the length of audioData being changed by an external class, which would cause the Wav class to break when trying to rewrite the buffer to a file
+- No protection or checks if the header structure is different from expected
+- If the file name to `readFile()` is invalid, a segfault occurs
+- Does not reject non-PCM and non-8/16 bit data, when it can only support PCM and 8/16-bit data
 
 ## Challenges encountered
