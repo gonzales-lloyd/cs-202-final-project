@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>MainWindow</string>
+   <string>WAV file manager: Group 33's CS 202 semester project</string>
   </property>
   <widget class="QWidget" name="centralwidget">
    <layout class="QHBoxLayout" name="horizontalLayout_2">
@@ -52,7 +52,7 @@
             <string/>
            </property>
            <property name="icon">
-            <iconset resource="resources.qrc">
+            <iconset resource="../resources/resources.qrc">
              <normaloff>:/images/OneDrive_Folder_Icon.svg.png</normaloff>:/images/OneDrive_Folder_Icon.svg.png</iconset>
            </property>
           </widget>
@@ -91,9 +91,9 @@
        <item>
         <layout class="QVBoxLayout" name="verticalLayout">
          <item>
-          <widget class="QPushButton" name="openNormalizeDialog">
+          <widget class="QPushButton" name="openNormalizationDialog">
            <property name="text">
-            <string>Normalize</string>
+            <string>Normalization</string>
            </property>
           </widget>
          </item>
@@ -105,7 +105,7 @@
           </widget>
          </item>
          <item>
-          <widget class="QPushButton" name="openGainAdjustDialog">
+          <widget class="QPushButton" name="openGainDialog">
            <property name="text">
             <string>Gain Adjustment</string>
            </property>
@@ -145,7 +145,7 @@
   <widget class="QStatusBar" name="statusbar"/>
  </widget>
  <resources>
-  <include location="resources.qrc"/>
+  <include location="../resources/resources.qrc"/>
  </resources>
  <connections/>
 </ui>

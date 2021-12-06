@@ -9,10 +9,6 @@ CONFIG += c++11
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 # https://stackoverflow.com/questions/49274025/qt-specify-project-directories-like-build-and-src-in-pro-flie
-MOC_DIR     = ./build/moc
-OBJECTS_DIR = ./build/obj
-RCC_DIR     = ./build/qrc
-UI_DIR      = ./build/uic
 
 INCLUDEPATH += include/
 
@@ -24,11 +20,7 @@ SOURCES += \
     src/NormalizationDialog.cpp \
     src/main.cpp \
     src/mainwindow.cpp
-    ui_gain.cpp
-    ui_normalization.cpp
-    ui_echo.cpp
-    ui_compression.cpp
-    ui_lowpass.cpp
+
 
 HEADERS += \
     include/CompressionDialog.h \
@@ -36,7 +28,7 @@ HEADERS += \
     include/GainDialog.h \
     include/LowPassDialog.h \
     include/NormalizationDialog.h \
-    include/mainwindow.h \
+    include/mainwindow.h
 
 FORMS += \
     uic/compression.ui \

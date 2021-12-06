@@ -16,7 +16,11 @@ public:
     ~MainWindow();
 
 private slots:
-    void on_openGainAdjustDialog_clicked();
+    void on_openCompressionDialog_clicked();
+    void on_openEchoDialog_clicked();
+    void on_openLowPassDialog_clicked();
+    void on_openGainDialog_clicked();
+    void on_openNormalizationDialog_clicked();
 
 private:
     Ui::MainWindow *ui;
