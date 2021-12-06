@@ -44,6 +44,9 @@ private slots:
     void showInfo(QString error);
     void showError(QString error);
 
+    void loadActive();
+    void saveActive(QString outputPath);
+
 private:
     Ui::MainWindow *ui;
     Wav active_wav;
