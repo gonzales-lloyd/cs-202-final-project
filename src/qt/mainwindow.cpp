@@ -140,6 +140,7 @@ void MainWindow::on_pathDialogButton_clicked()
 }
 
 void MainWindow::loadActive(){
+    active_wav = *new Wav();
     QString filePath = ui->inputPath->text();
     if(filePath.isEmpty()){
         showError("You must specify a file path first!");
