@@ -41,6 +41,7 @@ private slots:
 
     void on_loadFileButton_clicked();
 
+    void showInfo(QString error);
     void showError(QString error);
 
 private:

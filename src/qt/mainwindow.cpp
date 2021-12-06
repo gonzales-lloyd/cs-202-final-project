@@ -15,7 +15,13 @@ MainWindow::~MainWindow()
 //https://stackoverflow.com/questions/10017025/qt-creator-error-message
 void MainWindow::showError(QString error){
     QMessageBox messageBox;
-    messageBox.critical(0,"Error", error);
+    messageBox.critical(0, "Error", error);
+    messageBox.setFixedSize(500,200);
+}
+
+void MainWindow::showInfo(QString text){
+    QMessageBox messageBox;
+    messageBox.information(0, "Info", text);
     messageBox.setFixedSize(500,200);
 }
 
@@ -57,6 +63,17 @@ void MainWindow::on_openNormalizationDialog_clicked()
     auto normalization = new NormalizationDialog(this);
     if(normalization->exec() == QDialog::Accepted){
         QString outputPath = normalization->outputPath->text();
+        if(outputPath.isEmpty()){
+            showError("Please specify a save location!");
+            return;
+        }
+        WavManipulation::normalize(active_wav);
+        try{
+            active_wav.writeFile(outputPath.toStdString());
+            showInfo("File saved!");
+        }catch(std::runtime_error &e){
+            showError(e.what());
+        }
     }
 }
 
@@ -92,8 +109,12 @@ void MainWindow::on_openCompressionDialog_clicked()
 
 void MainWindow::on_pathDialogButton_clicked()
 {
+    auto openDir = QDir::currentPath();
+    if(!ui->inputPath->text().isEmpty()){
+        openDir = ui->inputPath->text();
+    }
     QString filePath = QFileDialog::getOpenFileName(this,
-         tr("Load WAV file..."), QDir::currentPath(), tr("WAV (*.wav)"));
+         tr("Load WAV file..."), openDir, tr("WAV (*.wav)"));
     if(!filePath.isEmpty()){
          ui->inputPath->setText(filePath);
     }
