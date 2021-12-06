@@ -15,6 +15,7 @@ public:
     LowPassDialog(QWidget*parent = 0);
 private slots:
     void on_pathDialogButton_clicked();
+    void on_LowPassDialog_rejected();
 };
 
 #endif // LOWPASSDIALOG_H

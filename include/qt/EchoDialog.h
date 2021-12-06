@@ -15,6 +15,7 @@ public:
     EchoDialog(QWidget*parent = 0);
 private slots:
     void on_pathDialogButton_clicked();
+    void on_EchoDialog_rejected();
 };
 
 #endif // EchoDIALOG_H

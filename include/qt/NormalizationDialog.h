@@ -15,6 +15,7 @@ public:
     NormalizationDialog(QWidget*parent = 0);
 private slots:
     void on_pathDialogButton_clicked();
+    void on_NormalizationDialog_rejected();
 };
 
 #endif // NORMALIZATIONDIALOG_H

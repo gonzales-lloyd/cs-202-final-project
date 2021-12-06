@@ -15,6 +15,7 @@ public:
     GainDialog(QWidget*parent = 0);
 private slots:
     void on_pathDialogButton_clicked();
+    void on_GainDialog_rejected();
 };
 
 #endif // GAINDIALOG_H

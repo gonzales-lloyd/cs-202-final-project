@@ -11,6 +11,7 @@ CONFIG += c++11
 # https://stackoverflow.com/questions/49274025/qt-specify-project-directories-like-build-and-src-in-pro-flie
 
 INCLUDEPATH += include/qt/
+INCLUDEPATH += include
 
 SOURCES += \
     src/qt/CompressionDialog.cpp \
@@ -19,7 +20,9 @@ SOURCES += \
     src/qt/LowPassDialog.cpp \
     src/qt/NormalizationDialog.cpp \
     src/qt/main.cpp \
-    src/qt/mainwindow.cpp
+    src/qt/mainwindow.cpp \
+    src/wav.cpp \
+    src/wavmanip.cpp
 
 
 HEADERS += \
@@ -28,7 +31,10 @@ HEADERS += \
     include/qt/GainDialog.h \
     include/qt/LowPassDialog.h \
     include/qt/NormalizationDialog.h \
-    include/qt/mainwindow.h
+    include/qt/mainwindow.h \
+    include/wav.h \
+    include/wavheader.h \
+    include/wavmanip.h
 
 FORMS += \
     uic/compression.ui \

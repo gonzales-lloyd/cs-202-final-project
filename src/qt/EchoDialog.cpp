@@ -12,3 +12,9 @@ void EchoDialog::on_pathDialogButton_clicked()
          tr("Save output as..."), QDir::currentPath(), tr("WAV (*.wav)"));
     this->outputPath->setText(filePath);
 }
+
+void EchoDialog::on_EchoDialog_rejected()
+{
+    this->close();
+}
+

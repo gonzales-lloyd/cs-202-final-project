@@ -3,6 +3,21 @@
 
 #include <QMainWindow>
 
+#include "ui_mainwindow.h"
+
+#include "GainDialog.h"
+#include "CompressionDialog.h"
+#include "EchoDialog.h"
+#include "NormalizationDialog.h"
+#include "LowPassDialog.h"
+
+#include <QtWidgets/QDialog>
+#include <QFileDialog>
+#include <QMessageBox>
+
+#include "wav.h"
+#include "wavmanip.h"
+
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
 QT_END_NAMESPACE
@@ -22,7 +37,15 @@ private slots:
     void on_openGainDialog_clicked();
     void on_openNormalizationDialog_clicked();
 
+    void on_pathDialogButton_clicked();
+
+    void on_loadFileButton_clicked();
+
+    void showError(QString error);
+
 private:
     Ui::MainWindow *ui;
+    Wav active_wav;
+
 };
 #endif // MAINWINDOW_H

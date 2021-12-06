@@ -15,6 +15,7 @@ public:
     CompressionDialog(QWidget*parent = 0);
 private slots:
     void on_pathDialogButton_clicked();
+    void on_CompressionDialog_rejected();
 };
 
 #endif // COMPRESSIONDIALOG_H

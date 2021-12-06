@@ -12,3 +12,9 @@ void LowPassDialog::on_pathDialogButton_clicked()
          tr("Save output as..."), QDir::currentPath(), tr("WAV (*.wav)"));
     this->outputPath->setText(filePath);
 }
+
+void LowPassDialog::on_LowPassDialog_rejected()
+{
+    this->close();
+}
+

@@ -12,3 +12,9 @@ void GainDialog::on_pathDialogButton_clicked()
          tr("Save output as..."), QDir::currentPath(), tr("WAV (*.wav)"));
     this->outputPath->setText(filePath);
 }
+
+void GainDialog::on_GainDialog_rejected()
+{
+    this->close();
+}
+
