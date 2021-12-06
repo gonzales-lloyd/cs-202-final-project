@@ -248,8 +248,11 @@ int Wav::secondAsSample(double sec) const{
 }
 
 Wav::~Wav(){
+    freebuffer();
+}
+
+void Wav::freebuffer(){
     if(fileLoaded){
         delete[] buffer;
     }
 }
-

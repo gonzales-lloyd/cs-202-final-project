@@ -140,6 +140,7 @@ void MainWindow::on_pathDialogButton_clicked()
 }
 
 void MainWindow::loadActive(){
+    active_wav.freebuffer();
     active_wav = *new Wav();
     QString filePath = ui->inputPath->text();
     if(filePath.isEmpty()){
