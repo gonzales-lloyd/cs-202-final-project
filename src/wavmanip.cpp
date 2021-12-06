@@ -51,6 +51,11 @@ void WavManipulation::echo(Wav& wav_obj, double start_sec, double end_sec, doubl
 
         for(int i = iteration_start_position; i<wav_obj.getSamplesPerChannel(); i++){
             int echo_selection = i - ((iteration*iteration_length)+selection_length);
+            if (echo_selection<0){
+                //the first delay is very close to the start of the audio
+                //so the target selection should be the start of the actual selection+the offset
+                echo_selection = wav_obj.secondAsSample(start_sec)+(i-iteration_start_position);
+            }
             for(int channel = 0; channel<wav_obj.getNumChannels(); channel++){
                 if(i>0 && echo_selection>0){
                     temp[channel][i] += iteration_scale * wav_obj.audioData[channel][echo_selection];
