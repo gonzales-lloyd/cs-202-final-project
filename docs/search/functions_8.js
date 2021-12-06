@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['secondassample_83',['secondAsSample',['../classWav.html#af4f57b4f2e5c008a735263bc65c5d1f5',1,'Wav']]]
+  ['readfile_83',['readFile',['../classWav.html#a1c4230cec49d30147a5b8a1950083f7c',1,'Wav']]],
+  ['rewritebuffer_84',['rewriteBuffer',['../classWav.html#af9458bb1ec46a4cf5c0de1af136fa9aa',1,'Wav']]]
 ];

@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['_7ewav_85',['~Wav',['../classWav.html#a1510b246ba121b103a60b8e7839af25f',1,'Wav']]]
+  ['writefile_86',['writeFile',['../classWav.html#a0d73b5d4f81b27a53d2a6fb05f6a670a',1,'Wav']]]
 ];
