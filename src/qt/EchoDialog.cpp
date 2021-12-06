@@ -8,8 +8,12 @@ EchoDialog::EchoDialog(QWidget*parent):QDialog(parent){
 
 void EchoDialog::on_pathDialogButton_clicked()
 {
+    auto openDir = QDir::currentPath();
+    if(!this->outputPath->text().isEmpty()){
+        openDir = this->outputPath->text();
+    }
     QString filePath = QFileDialog::getOpenFileName(this,
-         tr("Save output as..."), QDir::currentPath(), tr("WAV (*.wav)"));
+         tr("Load WAV file..."), openDir, tr("WAV (*.wav)"));
     this->outputPath->setText(filePath);
 }
 
