@@ -14,7 +14,13 @@ class GainDialog : public QDialog, public Ui_GainDialog{
 public:
     GainDialog(QWidget*parent = 0);
 private slots:
+    /**
+     * @brief Slot to open filepath dialog when the path dialog button is clicked.
+     */
     void on_pathDialogButton_clicked();
+    /**
+     * @brief Slot to ensure window closes on rejection.
+     */
     void on_GainDialog_rejected();
 };
 

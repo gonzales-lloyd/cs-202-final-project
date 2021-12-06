@@ -14,7 +14,13 @@ class LowPassDialog : public QDialog, public Ui_LowPassDialog{
 public:
     LowPassDialog(QWidget*parent = 0);
 private slots:
+    /**
+     * @brief Slot to open filepath dialog when the path dialog button is clicked.
+     */
     void on_pathDialogButton_clicked();
+    /**
+     * @brief Slot to ensure window closes on rejection.
+     */
     void on_LowPassDialog_rejected();
 };
 
