@@ -8,23 +8,43 @@ CONFIG += c++11
 # In order to do so, uncomment the following line.
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
+# https://stackoverflow.com/questions/49274025/qt-specify-project-directories-like-build-and-src-in-pro-flie
+MOC_DIR     = ./build/moc
+OBJECTS_DIR = ./build/obj
+RCC_DIR     = ./build/qrc
+UI_DIR      = ./build/uic
+
+INCLUDEPATH += include/
+
 SOURCES += \
-    GainDialog.cpp \
-    main.cpp \
-    mainwindow.cpp
+    src/CompressionDialog.cpp \
+    src/EchoDialog.cpp \
+    src/GainDialog.cpp \
+    src/LowPassDialog.cpp \
+    src/NormalizationDialog.cpp \
+    src/main.cpp \
+    src/mainwindow.cpp
     ui_gain.cpp
+    ui_normalization.cpp
+    ui_echo.cpp
+    ui_compression.cpp
+    ui_lowpass.cpp
 
 HEADERS += \
-    GainDialog.h \
-    mainwindow.h
+    include/CompressionDialog.h \
+    include/EchoDialog.h \
+    include/GainDialog.h \
+    include/LowPassDialog.h \
+    include/NormalizationDialog.h \
+    include/mainwindow.h \
 
 FORMS += \
-    compression.ui \
-    echo.ui \
-    gain.ui \
-    lowpass.ui \
-    mainwindow.ui \
-    normalization.ui
+    uic/compression.ui \
+    uic/echo.ui \
+    uic/gain.ui \
+    uic/lowpass.ui \
+    uic/mainwindow.ui \
+    uic/normalization.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
@@ -32,7 +52,7 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
 DISTFILES += \
-    OneDrive_Folder_Icon.svg.png
+    resources/OneDrive_Folder_Icon.svg.png
 
 RESOURCES += \
-    resources.qrc
+    resources/resources.qrc
