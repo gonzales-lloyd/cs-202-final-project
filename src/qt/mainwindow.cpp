@@ -25,6 +25,7 @@ void MainWindow::showInfo(QString text){
     messageBox.setFixedSize(500,200);
 }
 
+//https://stackoverflow.com/questions/13116863/qt-show-modal-dialog-ui-on-menu-item-click
 void MainWindow::on_openEchoDialog_clicked()
 {
     if(!active_wav.fileLoaded){
@@ -123,8 +124,6 @@ void MainWindow::on_openCompressionDialog_clicked()
         saveActive(outputPath);
     }
 }
-
-//https://stackoverflow.com/questions/13116863/qt-show-modal-dialog-ui-on-menu-item-click
 
 void MainWindow::on_pathDialogButton_clicked()
 {
