@@ -8,6 +8,9 @@ This is a **challenge level** project.
   - [Table of contents](#table-of-contents)
   - [Members and contributions](#members-and-contributions)
   - [Build instructions](#build-instructions)
+  - [Sample usage](#sample-usage)
+    - [Selected outputs](#selected-outputs)
+    - [Screenshots](#screenshots)
   - [UML diagram](#uml-diagram)
   - [Known issues and missing functionality](#known-issues-and-missing-functionality)
     - [Bugs](#bugs)
@@ -38,6 +41,35 @@ Alternatively, to generate the GUI version (which requires that the Qt source be
 - Run `make`
 
 Note that release versions made through `qmake` or other means may fail. See [Design oversights](#design-oversights) for a workaround.
+
+## Sample usage
+Also known as "proof that it works on at least one computer."
+
+### Selected outputs
+All processors were run on `test-files/CantinaBand3.wav`, except for echo (which was run on `testfiles/echotest.wav`.)
+- `sample_files/normalization.wav`
+  - No options
+- `sample_files/negative-echo.wav`
+  - Start time: 0 sec
+  - End time: 2.5 sec
+  - Decay factor: 0.8
+  - Delay: -1 sec
+- `sample_files/positive-echo.wav`
+  - Start time: 0 sec
+  - End time: 2.5 sec
+  - Decay factor: 0.8
+  - Delay: 0 sec
+- `sample_files/gain.wav`
+  - Scale factor: 0.1
+- `sample_files/lowpass.wav` (This file may be loud! It was run through the gain processor with a scale of 0.5 to try to compensate.)
+  - Sample delay: 2
+  - Gain: 1
+- `sample_files/compression.wav`
+  - Threshold: 0.01
+  - Attenuation factor: 0.8
+### Screenshots
+![Console screenshot](sample_files/console_sample.png)
+![UI screenshot](sample_files/ui_sample.png)
 ## UML diagram
 The dashed arrows represent dependencies, so as to avoid having the non-inherited classes just be floating with no clear relation to the others. Note that the core of the program (which is used by the console version) is on the right side of the diagram, with all attributes and methods listed.
 
@@ -45,7 +77,7 @@ It is also assumed that (theoretically) a `wav_header` could be used by another 
 
 The only dependencies of `MainWindow` listed are those that it immediately depends on.
 
-![UML diagram](uml_diagram.png)
+![UML diagram](sample_files/uml_diagram.png)
 ## Known issues and missing functionality
 
 ### Bugs
