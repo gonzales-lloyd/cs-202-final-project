@@ -3,6 +3,21 @@ A program for basic processing on 8-bit and 16-bit WAV files.
 
 This is a **challenge level** project.
 
+## Table of contents
+- [CS 202 Fall 2021 Final Project](#cs-202-fall-2021-final-project)
+  - [Table of contents](#table-of-contents)
+  - [Members and contributions](#members-and-contributions)
+  - [Build instructions](#build-instructions)
+  - [UML diagram](#uml-diagram)
+  - [Known issues and missing functionality](#known-issues-and-missing-functionality)
+    - [Bugs](#bugs)
+    - [Design oversights](#design-oversights)
+    - [Other](#other)
+  - [Challenges encountered](#challenges-encountered)
+    - [Handling different audio data sizes](#handling-different-audio-data-sizes)
+    - [Qt](#qt)
+    - [General challenges](#general-challenges)
+
 ## Members and contributions
  - **Austin Zube** - Documentation, writeups
  - **Grant Pellegrini** - All processors
