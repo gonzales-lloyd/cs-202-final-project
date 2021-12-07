@@ -30,9 +30,9 @@ To build the base program, `wav_manager`, run `make` in the source directory.
 
 To generate the documentation, ensure you have `doxygen` installed from your package manager. Then, run `make docs` or `doxygen Doxyfile` from the source directory.
 
-To generate the GUI version of the program, you may use Qt Creator to open `cs202-final-project.pro`, and run it in debug mode.
+To generate the GUI version of the program, you may use Qt Creator to open `cs202-final-project.pro`, and run it in debug mode. (You must have Qt Creator and the Qt library installed on your platform - this project was built in Qt 6, but is compatible with Qt 5.)
 
-Alternatively, to generate the GUI version:
+Alternatively, to generate the GUI version (which requires that the Qt source be installed):
 - Create a build folder in the location of your choice
 - Run `qmake cs202-final-project.pro`, inserting the full path to the project file as necessary
 - Run `make`
