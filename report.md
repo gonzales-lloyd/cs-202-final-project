@@ -27,7 +27,7 @@ This is a **challenge level** project.
  - **Lloyd Gonzales** - Project structuring and setup (Doxyfile, makefile, folder structure); Wav class implementation; processor integration; main menu logic; Qt
 
 ## Build instructions
-Note: the documentation is available on Github Pages under https://gonzales-lloyd.github.io/cs-202-final-project/index.html.
+Note: the documentation is available on Github Pages under https://gonzales-lloyd.github.io/cs-202-final-project/index.html. **Qt files are not documented!** (See [Design oversights](#design-oversights) for reasoning)
 
 To build the base program, `wav_manager`, run `make` in the source directory.
 
@@ -99,6 +99,7 @@ threshold = std::min(threshold, 1.0);
 attenuation_factor = std::max(attenuation_factor, 0.0);
 attenuation_factor = std::min(attenuation_factor, 1.0);
 ```
+- The Qt code is likely very unclean, and isn't documented because many header files would simply have repeated comments from the similar dialog classes, cluttering the documentation.
 ### Other
 - Unsure what low-pass filter should sound like, but it is implemented according to the diagram sent in the Discord server
 - GUI does not run on Windows without additionally adding several DLL files must also be manually added to the executable folder and to \platforms\... (see https://stackoverflow.com/questions/20495620/qt-5-1-1-application-failed-to-start-because-platform-plugin-windows-is-missi); `windeployqt` appears to fail to add all dependencies
