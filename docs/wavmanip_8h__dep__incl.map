@@ -1,0 +1,7 @@
+<map id="include/wavmanip.h" name="include/wavmanip.h">
+<area shape="rect" id="node1" title=" " alt="" coords="84,5,237,32"/>
+<area shape="rect" id="node2" href="$wavmanip_8cpp.html" title="Implementation file for the WavManipulation class." alt="" coords="5,80,145,107"/>
+<area shape="rect" id="node3" href="$menulogic_8h.html" title=" " alt="" coords="169,80,323,107"/>
+<area shape="rect" id="node4" href="$main_8cpp.html" title="The driver file." alt="" coords="120,155,225,181"/>
+<area shape="rect" id="node5" href="$menulogic_8cpp.html" title="Implementation file for the MenuLogic class." alt="" coords="249,155,389,181"/>
+</map>
