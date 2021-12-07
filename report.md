@@ -39,7 +39,13 @@ Alternatively, to generate the GUI version:
 
 Note that release versions made through `qmake` or other means may fail. See [Design oversights](#design-oversights) for a workaround.
 ## UML diagram
+The dashed arrows represent dependencies, so as to avoid having the non-inherited classes just be floating with no clear relation to the others. Note that the core of the program (which is used by the console version) is on the right side of the diagram, with all attributes and methods listed.
 
+It is also assumed that (theoretically) a `wav_header` could be used by another library independently, if need be. This can be supported by the fact that many different implementations of the Wav-managing class across the CS 202 class may have used a very similar `wav_header` implementation based on Dr. Lancaster's video. Thus, `wav_header` has an aggregation link instead of a composition link, even though its specific usage in this program might suggest composition.
+
+The only dependencies of `MainWindow` listed are those that it immediately depends on.
+
+![UML diagram](uml_diagram.png)
 ## Known issues and missing functionality
 
 ### Bugs
@@ -47,7 +53,7 @@ Note that release versions made through `qmake` or other means may fail. See [De
 - Possible memory leak on GUI/Qt version due to poor memory management (see [Challenges encountered - Qt](#qt))
 ### Design oversights
 - No protection against the length of audioData being changed by an external class, which would cause the Wav class to break when trying to rewrite the buffer to a file
-- The template call to `Wav::clamp` in `WavManip` will cause Qt release builds to fail. To fix, locate the following lines in `wavmanip.cpp`, under the `compress()` function:
+- The template call to `Wav::clamp()` in `WavManip` will cause Qt release builds to fail. To fix, locate the following lines in `wavmanip.cpp`, under the `compress()` function:
 ```
 threshold = Wav::clamp<double>(threshold, 0.0, 1.0);
 attenuation_factor = Wav::clamp<double>(attenuation_factor, 0.0, 1.0);
@@ -62,7 +68,8 @@ attenuation_factor = std::min(attenuation_factor, 1.0);
 ### Other
 - Unsure what low-pass filter should sound like, but it is implemented according to the diagram sent in the Discord server
 - GUI does not run on Windows without additionally adding several DLL files must also be manually added to the executable folder and to \platforms\... (see https://stackoverflow.com/questions/20495620/qt-5-1-1-application-failed-to-start-because-platform-plugin-windows-is-missi); `windeployqt` appears to fail to add all dependencies
-- The Wav class provides `fileLoaded`, an attribute flag denoting whether an audio file has been successfully loaded or not. This flag is only internally used for deciding whether to free the internal buffer or not, but it may be relevant if the class were to ever be used as a library.
+- The Wav class provides `fileLoaded`, an attribute flag denoting whether an audio file has been successfully loaded or not. This flag is only internally used for deciding whether to free the internal buffer or not, but it may be relevant if the class were to ever be used as a library. However, it is not used for any form of validation (e.g. blocking processing when no file has been loaded yet).
+- camelCase and snake_case are mixed throughout the program, with no real consistency.
 
 ## Challenges encountered
 During the project, there were two major challenges we encountered: effectively managing the audio data, and dealing with Qt for the challenge-level project. There were also some additional challenges in general, which are described briefly below. 
