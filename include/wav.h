@@ -132,6 +132,9 @@ public:
      * Class destructor.
      */
     ~Wav();
+    /**
+     * @brief Free the buffer.
+     */
     void freebuffer();
 
 };

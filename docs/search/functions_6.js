@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['normalize_80',['normalize',['../classWavManipulation.html#adbcf06c81dbd3d97914e23a1e996a1f1',1,'WavManipulation']]]
+  ['main_81',['main',['../main_8cpp.html#a0ddf1224851353fc92bfbff6f499fa97',1,'main.cpp']]]
 ];
