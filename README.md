@@ -68,9 +68,12 @@ All processors were run on `test-files/CantinaBand3.wav`, except for echo (which
   - Threshold: 0.01
   - Attenuation factor: 0.8
 ### Screenshots
-Console screenshot:
+**Console screenshot:**
+
 ![Console screenshot](sample_files/console_sample.png)
-UI screenshot (Windows):
+
+**UI screenshot (Windows):**
+
 ![UI screenshot](sample_files/ui_sample.png)
 ## UML diagram
 The dashed arrows represent dependencies, so as to avoid having the non-inherited classes just be floating with no clear relation to the others. Note that the core of the program (which is used by the console version) is on the right side of the diagram, with all attributes and methods listed.
