@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.9.1"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>CS 202 F21 Final Project: CS 202 Semester Project, F21</title>
+<title>CS 202 F21 Final Project: CS 202 Fall 2021 Final Project</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -62,179 +62,182 @@ $(function() {
 
 <div class="PageDoc"><div class="header">
   <div class="headertitle">
-<div class="title">CS 202 Semester Project, F21 </div>  </div>
+<div class="title">CS 202 Fall 2021 Final Project </div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p><a class="anchor" id="md_README"></a>The semester project is a group project. It counts for four programming assignments. As noted below, if a group successfully completes the challenge level, a grade of 120% is possible.</p>
+<div class="textblock"><p><a class="anchor" id="md_README"></a>A program for basic processing on 8-bit and 16-bit WAV files.</p>
+<p>This is a <b>challenge level</b> project.</p>
 <h1><a class="anchor" id="autotoc_md1"></a>
-Contents</h1>
+Table of contents</h1>
 <ul>
-<li><a href="#cs-202-semester-project-f21">CS 202 Semester Project, F21</a><ul>
-<li><a href="#contents">Contents</a></li>
-<li><a href="#overview">Overview</a></li>
-<li><a href="#project-levels">Project Levels</a></li>
-<li><a href="#project-description">Project Description</a><ul>
-<li><a href="#background">Background</a><ul>
-<li><a href="#sample-rates">Sample Rates</a></li>
-<li><a href="#quantization-bit-depth">Quantization (bit depth)</a></li>
-<li><a href="#file-formats-and-compression">File Formats and Compression</a></li>
+<li><a href="#cs-202-fall-2021-final-project">CS 202 Fall 2021 Final Project</a><ul>
+<li><a href="#table-of-contents">Table of contents</a></li>
+<li><a href="#members-and-contributions">Members and contributions</a></li>
+<li><a href="#build-instructions">Build instructions</a></li>
+<li><a href="#sample-usage">Sample usage</a><ul>
+<li><a href="#selected-outputs">Selected outputs</a></li>
+<li><a href="#screenshots">Screenshots</a></li>
 </ul>
 </li>
+<li><a href="#uml-diagram">UML diagram</a></li>
+<li><a href="#known-issues-and-missing-functionality">Known issues and missing functionality</a><ul>
+<li><a href="#bugs">Bugs</a></li>
+<li><a href="#design-oversights">Design oversights</a></li>
+<li><a href="#other">Other</a></li>
 </ul>
 </li>
-<li><a href="#basic-level-requirements">Basic Level Requirements</a><ul>
-<li><a href="#program-flow">Program Flow</a></li>
-<li><a href="#required-processors">Required Processors</a></li>
+<li><a href="#challenges-encountered">Challenges encountered</a><ul>
+<li><a href="#handling-different-audio-data-sizes">Handling different audio data sizes</a></li>
+<li><a href="#qt">Qt</a></li>
+<li><a href="#general-challenges">General challenges</a></li>
 </ul>
 </li>
-<li><a href="#challenge-level-requirements">Challenge Level Requirements</a><ul>
-<li><a href="#program-flow-1">Program Flow</a></li>
-<li><a href="#required-processors-1">Required Processors</a></li>
-</ul>
-</li>
-<li><a href="#architectural-requirements-basic-and-challenge">Architectural Requirements (Basic and Challenge)</a><ul>
-<li><a href="#documentation">Documentation</a></li>
-</ul>
-</li>
-<li><a href="#grading">Grading</a></li>
-<li><a href="#what-to-turn-in">What to Turn In</a></li>
 </ul>
 </li>
 </ul>
 <h1><a class="anchor" id="autotoc_md2"></a>
-Overview</h1>
-<p>This project is designed to provide experience in</p><ul>
-<li>working with binary files and pre-defined file formats</li>
-<li>manipulating data in arrays in a variety of formats</li>
-<li>developing a terminal-based user interface</li>
-<li>using inheritance, abstract classes and interfaces, and composition</li>
-<li>developing a modular design using good design and development principles</li>
+Members and contributions</h1>
+<ul>
+<li><b>Austin Zube</b> - Documentation, writeups</li>
+<li><b>Grant Pellegrini</b> - All processors</li>
+<li><b>Lloyd Gonzales</b> - Project structuring and setup (Doxyfile, makefile, folder structure); <a class="el" href="classWav.html" title="Class used for representing a WAV file.">Wav</a> class implementation; processor integration; main menu logic; Qt</li>
 </ul>
 <h1><a class="anchor" id="autotoc_md3"></a>
-Project Levels</h1>
-<ul>
-<li>Base Level: All groups must attempt the base level project, which consists of building the application as described here with a console user interface.</li>
-<li>Challenge Level: A group can make a maximum of 120 by adding a graphical user interface using the Qt framework.</li>
+Build instructions</h1>
+<p>Note: the documentation is available on Github Pages under <a href="https://gonzales-lloyd.github.io/cs-202-final-project/index.html">https://gonzales-lloyd.github.io/cs-202-final-project/index.html</a>. <b>Qt files are not documented!</b> (See <a href="#design-oversights">Design oversights</a> for reasoning)</p>
+<p>To build the base program, <code>wav_manager</code>, run <code>make</code> in the source directory.</p>
+<p>To generate the documentation, ensure you have <code>doxygen</code> installed from your package manager. Then, run <code>make docs</code> or <code>doxygen Doxyfile</code> from the source directory.</p>
+<p>To generate the GUI version of the program, you may use Qt Creator to open <code>cs202-final-project.pro</code>, and run it in debug mode. (You must have Qt Creator and the Qt library installed on your platform - this project was built in Qt 6, but is compatible with Qt 5.)</p>
+<p>Alternatively, to generate the GUI version (which requires that the Qt source be installed):</p><ul>
+<li>Create a build folder in the location of your choice</li>
+<li>Run <code>qmake cs202-final-project.pro</code>, inserting the full path to the project file as necessary</li>
+<li>Run <code>make</code></li>
 </ul>
+<p>Note that release versions made through <code>qmake</code> or other means may fail. See <a href="#design-oversights">Design oversights</a> for a workaround.</p>
 <h1><a class="anchor" id="autotoc_md4"></a>
-Project Description</h1>
-<p>In this project, you will create an application that can load audio data from <code>wav</code> files, manipulate the data to add common audio effects such as echo and compression and save the files for later playback.</p>
+Sample usage</h1>
+<p>Also known as "proof that it works on at least one computer."</p>
 <h2><a class="anchor" id="autotoc_md5"></a>
-Background</h2>
-<p>Digital audio files consist of thousands of <em>samples</em>. A sample is a measurement of the amplitude of the signal coming from a microphone or electronic instrument at an instant in time. The process of turning the sampled value into a binary number is called <em>quantization</em>. The process is referred to as <em>pulse code modulation</em>.</p>
-<h3><a class="anchor" id="autotoc_md6"></a>
-Sample Rates</h3>
-<p>Modern digital audio systems typically record 44,100 or 48,000 samples per second per channel, so a stereo recording collects 88,200 or 176,400 samples, respectively, for every second of audio recorded. The sample rate directly affects the system frequency response.</p>
-<h3><a class="anchor" id="autotoc_md7"></a>
-Quantization (bit depth)</h3>
-<p>The number of bits used to store a sample determines the accuracy of the sample. The higher number of bits used, the more accurate and less noisy the samples. Typical sample formats are 8, 16, 24, and 32 bits. We will be using wav files that are either 8 or 16 bits, and either mono or stereo.</p>
-<p>For more information, see <a href="https://www.izotope.com/en/learn/digital-audio-basics-sample-rate-and-bit-depth.html">https://www.izotope.com/en/learn/digital-audio-basics-sample-rate-and-bit-depth.html</a></p>
-<h3><a class="anchor" id="autotoc_md8"></a>
-File Formats and Compression</h3>
-<p>Audio files are binary rather than text. The data can be compressed (not zip!) in order to reduce the file size or they can contain uncompressed sample values. Compressed formats include mp3 and AAC. We will be working with uncompressed files in the <code>wav</code> file format. The format for a <code>wav</code> file can be found here: <a href="http://soundfile.sapp.org/doc/WaveFormat/">http://soundfile.sapp.org/doc/WaveFormat/</a></p>
-<p>Handling binary wav files is explained here: <a href="https://www.youtube.com/watch?v=7uQjw5PY63s">https://www.youtube.com/watch?v=7uQjw5PY63s</a></p>
-<h1><a class="anchor" id="autotoc_md9"></a>
-Basic Level Requirements</h1>
-<p>The basic level application presents the user with a console interface.</p>
+Selected outputs</h2>
+<p>All processors were run on <code>test-files/CantinaBand3.wav</code>, except for echo (which was run on <code>testfiles/echotest.wav</code>.)</p><ul>
+<li><code>sample_files/normalization.wav</code><ul>
+<li>No options</li>
+</ul>
+</li>
+<li><code>sample_files/negative-echo.wav</code><ul>
+<li>Start time: 0 sec</li>
+<li>End time: 2.5 sec</li>
+<li>Decay factor: 0.8</li>
+<li>Delay: -1 sec</li>
+</ul>
+</li>
+<li><code>sample_files/positive-echo.wav</code><ul>
+<li>Start time: 0 sec</li>
+<li>End time: 2.5 sec</li>
+<li>Decay factor: 0.8</li>
+<li>Delay: 0 sec</li>
+</ul>
+</li>
+<li><code>sample_files/gain.wav</code><ul>
+<li>Scale factor: 0.1</li>
+</ul>
+</li>
+<li><code>sample_files/lowpass.wav</code> (This file may be loud! It was run through the gain processor with a scale of 0.5 to try to compensate.)<ul>
+<li>Sample delay: 2</li>
+<li>Gain: 1</li>
+</ul>
+</li>
+<li><code>sample_files/compression.wav</code><ul>
+<li>Threshold: 0.01</li>
+<li>Attenuation factor: 0.8 </li>
+</ul>
+</li>
+</ul>
+<h2><a class="anchor" id="autotoc_md6"></a>
+Screenshots</h2>
+<p><b>Console screenshot:</b></p>
+<p><img src="sample_files/console_sample.png" alt="Console screenshot" class="inline"/></p>
+<p><b>UI screenshot (Windows):</b></p>
+<p><img src="sample_files/ui_sample.png" alt="UI screenshot" class="inline"/> </p>
+<h1><a class="anchor" id="autotoc_md7"></a>
+UML diagram</h1>
+<p>The dashed arrows represent dependencies, so as to avoid having the non-inherited classes just be floating with no clear relation to the others. Note that the core of the program (which is used by the console version) is on the right side of the diagram, with all attributes and methods listed.</p>
+<p>It is also assumed that (theoretically) a <code><a class="el" href="structwav__header.html" title="Struct containing the WAV header.">wav_header</a></code> could be used by another library independently, if need be. This can be supported by the fact that many different implementations of the Wav-managing class across the CS 202 class may have used a very similar <code><a class="el" href="structwav__header.html" title="Struct containing the WAV header.">wav_header</a></code> implementation based on Dr. Lancaster's video. Thus, <code><a class="el" href="structwav__header.html" title="Struct containing the WAV header.">wav_header</a></code> has an aggregation link instead of a composition link, even though its specific usage in this program might suggest composition.</p>
+<p>The only dependencies of <code>MainWindow</code> listed are those that it immediately depends on.</p>
+<p><img src="sample_files/uml_diagram.png" alt="UML diagram" class="inline"/> </p>
+<h1><a class="anchor" id="autotoc_md8"></a>
+Known issues and missing functionality</h1>
+<h2><a class="anchor" id="autotoc_md9"></a>
+Bugs</h2>
+<ul>
+<li>If the end time passed into <code><a class="el" href="classWavManipulation.html#a955909d5a87ae1b415914cd56998df18" title="Generate an echo of the selected audio in a Wav object.">WavManipulation::echo()</a></code> is too large, the program hangs (other extreme inputs of correct data types may cause similar behavior)</li>
+<li>Possible memory leak on GUI/Qt version due to poor memory management (see <a href="#qt">Challenges encountered - Qt</a>) </li>
+</ul>
 <h2><a class="anchor" id="autotoc_md10"></a>
-Program Flow</h2>
-<p>The following pseudo-code shows the required application flow for the base level console version:</p>
-<div class="fragment"><div class="line">Start: Present start menu  </div>
-<div class="line">If user selects quit, exit program  </div>
-<div class="line">Else  </div>
-<div class="line"> Request filename from user  </div>
-<div class="line"> Open file specified by filename  </div>
-<div class="line"> If file does not exist or file is not wav file  </div>
-<div class="line"> display error message and goto start  </div>
-<div class="line"> else  </div>
-<div class="line"> read file metadata  </div>
-<div class="line">(1) display metadata to user  </div>
-<div class="line"> present user with processor menu  </div>
-<div class="line"> If user selects processor option  </div>
-<div class="line"> request output filename  </div>
-<div class="line"> run processor  </div>
-<div class="line"> save file  </div>
-<div class="line"> goto Start  </div>
-</div><!-- fragment --><p><b>Start Menu</b> The base start should allow the user to enter the name of a wav file or exit the application.</p>
-<p><b>File Metadata</b> The data to be displayed in step (1):</p><ul>
-<li>filename</li>
-<li>sample rate</li>
-<li>bits per sample</li>
-<li>stereo or mono</li>
+Design oversights</h2>
+<ul>
+<li>No protection against the length of audioData being changed by an external class, which would cause the <a class="el" href="classWav.html" title="Class used for representing a WAV file.">Wav</a> class to break when trying to rewrite the buffer to a file</li>
+<li>The template call to <code><a class="el" href="classWav.html#aec8ac7b1f037f641fe164cac7b3e734d" title="Return value, or the maximum bounds passed in if value exceeds them.">Wav::clamp()</a></code> in <code>WavManip</code> will cause Qt release builds to fail. To fix, locate the following lines in <code><a class="el" href="wavmanip_8cpp.html" title="Implementation file for the WavManipulation class.">wavmanip.cpp</a></code>, under the <code>compress()</code> function: <div class="fragment"><div class="line">threshold = Wav::clamp&lt;double&gt;(threshold, 0.0, 1.0);</div>
+<div class="line">attenuation_factor = Wav::clamp&lt;double&gt;(attenuation_factor, 0.0, 1.0);</div>
+</div><!-- fragment --> and either delete them or replace these lines with: <div class="fragment"><div class="line">threshold = std::max(threshold, 0.0);</div>
+<div class="line">threshold = std::min(threshold, 1.0);</div>
+<div class="line">attenuation_factor = std::max(attenuation_factor, 0.0);</div>
+<div class="line">attenuation_factor = std::min(attenuation_factor, 1.0);</div>
+</div><!-- fragment --></li>
+<li>The Qt code is likely very unclean, and isn't documented because many header files would simply have repeated comments from the similar dialog classes, cluttering the documentation. </li>
 </ul>
 <h2><a class="anchor" id="autotoc_md11"></a>
-Required Processors</h2>
-<p>The following are the processes to be implemented</p><ul>
-<li>normalization<ul>
-<li>Algorithm: The largest sample value in the data is found, and then the data is scaled so that that value is the maximum possible value. This maximizes the amplitude of the final waveform.</li>
-<li>Example for floating-point data<ul>
-<li>Original data: n = {0,0.2,0.4,0,-0.3}</li>
-<li>Largest absolute value: 0.4, so scaling value s = 1/0.4 = 2.5</li>
-<li>Scaled result: n_scaled = {0, 0.5,1,0,-0.75}</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>echo<ul>
-<li>Algorithm: Samples are copied, scaled, and added to later locations in the sample buffer to create an echo effect.</li>
-</ul>
-</li>
-<li>gain adjustment<ul>
-<li>Algorithm: Samples are multiplied by a scaling factor that raises or lowers the overall amplitude of the wave file</li>
-</ul>
-</li>
+Other</h2>
+<ul>
+<li>Unsure what low-pass filter should sound like, but it is implemented according to the diagram sent in the Discord server</li>
+<li>GUI does not run on Windows without additionally adding several DLL files must also be manually added to the executable folder and to \platforms... (see <a href="https://stackoverflow.com/questions/20495620/qt-5-1-1-application-failed-to-start-because-platform-plugin-windows-is-missi">https://stackoverflow.com/questions/20495620/qt-5-1-1-application-failed-to-start-because-platform-plugin-windows-is-missi</a>); <code>windeployqt</code> appears to fail to add all dependencies</li>
+<li>The <a class="el" href="classWav.html" title="Class used for representing a WAV file.">Wav</a> class provides <code>fileLoaded</code>, an attribute flag denoting whether an audio file has been successfully loaded or not. This flag is only internally used for deciding whether to free the internal buffer or not, but it may be relevant if the class were to ever be used as a library. However, it is not used for any form of validation (e.g. blocking processing when no file has been loaded yet).</li>
+<li>camelCase and snake_case are mixed throughout the program, with no real consistency.</li>
 </ul>
 <h1><a class="anchor" id="autotoc_md12"></a>
-Challenge Level Requirements</h1>
-<p>For the challenge level, you will build a graphical user interface (GUI) using the Qt Framework (<a href="https://www.qt.io/">https://www.qt.io/</a>). This framework gives you the ability to build and distribute a cross-platform desktop or mobile application using C++ as the development language. The framework is free for open source and academic work and can be downloaded from the link above. The framework is very popular, so you will find many examples and tutorials online.</p>
+Challenges encountered</h1>
+<p>During the project, there were two major challenges we encountered: effectively managing the audio data, and dealing with Qt for the challenge-level project. There were also some additional challenges in general, which are described briefly below.</p>
 <h2><a class="anchor" id="autotoc_md13"></a>
-Program Flow</h2>
-<p>The basic flow for the GUI version is the same as the console, but of course adapted for a GUI application flow with menus, etc.</p>
+Handling different audio data sizes</h2>
+<p>At the start of the project, we initially considered making the entire <code><a class="el" href="classWav.html" title="Class used for representing a WAV file.">Wav</a></code> class templated. We would instantiate a different buffer type depending on the byte size of the audio data in the WAV file, creating different processor functions to handle each possible type like so: </p><div class="fragment"><div class="line">WavManipulator::gain(Wav&lt;unsigned char&gt; wav_obj){</div>
+<div class="line">    //implementation for 8-bit audio data</div>
+<div class="line">}</div>
+<div class="line"> </div>
+<div class="line">WavManipulator::gain(Wav&lt;signed short&gt; wav_obj){</div>
+<div class="line">    //implementation for 16-bit audio data</div>
+<div class="line">}</div>
+</div><!-- fragment --><p> We initially planned to simply create different versions of the processors for each byte size. Since there were a finite number of byte sizes and channels we were expected to deal with, it would be realistic to simply create overloads for all of the relevant functions if needed.</p>
+<p>However, we realized this would not be easy to maintain or troubleshoot. If there were an error in the 8-bit implementation of the <code>gain()</code> function, then it might not be a result of the implementation itself, but rather how we handle the 8-bit data. Furthermore, since we were unlikely to catch every possible bug in sanitizing input, we might end up with errors we might not expect. We would also need to create logic to determine which type to initialize a <code><a class="el" href="classWav.html" title="Class used for representing a WAV file.">Wav</a></code> object with, unnecessarily increasing the complexity of the project.</p>
+<p>We ultimately moved to converting all samples doubles based on Dr. Lancaster's videos and lectures. One additional major reason for this change was because we wanted certain behavior in our processors. For example, if the gain function caused samples to exceed the maximum threshold, we could still work with the data. If those samples exceeded the maximum threshold, we might fix this by renormalizing the audio, or applying a compress filter and then renormalizing the audio. By ensuring the data wasn't lost when the maximum theoretical amplitude was exceeded, we could support additional processing or fixes after each processor.</p>
+<p>It also resolves the issue of audio potentially overflowing under certain processors; given a sufficiently large scaling factor, the gain processor might completely distort the audio as some samples overflow and some sampels don't overflow. However, if we instead use doubles, we can simply set all samples above the maximum (<code>abs(1.0)</code>) to the maximum itself. This does result in loss of data, but still retains most of the audio fidelity. We felt this was the expected behavior when samples exceeded the normal maximum threshold.</p>
 <h2><a class="anchor" id="autotoc_md14"></a>
-Required Processors</h2>
-<p>The challenge-level application includes all the processors from the basic level. In addition, it must include the following processors:</p><ul>
-<li>low-pass filter<ul>
-<li>Remove high frequency components from the signal</li>
-</ul>
-</li>
-<li>compression / limiting<ul>
-<li>The dynamic range of the signal is compressed using a non-linear map of input to output. This is commonly used to limit loud peaks in the sound, and gives an overall impression of higher volume.</li>
-</ul>
+Qt</h2>
+<p>Having prior experience in PyQt, we decided to tackle the challenge level for this project. However, unlike PyQt, the nature of how the project should be structured was not completely clear. For example:</p><ul>
+<li>Certain files would be generated by the compiler automatically, and it was up to us to assume that they would be there when the program ran. For example, <code>ui_mainwindow.h</code> didn't exist, but we were supposed to operate on the assumption that it would exist when it was needed.</li>
+<li><code>qmake</code> needs to be told where all the files are (for it to effectively work on Qt Creator), usually with specific paths.</li>
+<li>There are many different ways to create dialog windows with or without the use of <code>.ui</code> files. Examples online varied in whether or not they utilized <code>.ui</code> files, which occasionally made it harder to determine what direct we should be going.</li>
+<li>Modularizing the windows and other UI components wasn't fully clear - should all of the processor dialogs be in their own file since they're all related and very similar, or should they be separate since future processors might demand more special functions? <br  />
 </li>
 </ul>
-<h1><a class="anchor" id="autotoc_md15"></a>
-Architectural Requirements (Basic and Challenge)</h1>
-<p>The system design is to be modular to facilitate dividing up the development work, and more importantly, to aid in testing and expansion of the application's capabilities. The required modules are</p><ul>
-<li>File management: manages reading and writing of files in the required formats</li>
-<li>User interaction: manages the console user interaction. In the case of the challenge version using Qt, the module should provide a single point of entry to the processors, etc.</li>
-<li>Processing: management of sample buffers, application of processors, etc. Each module will consist of one or more classes that are access through one or more interfaces.</li>
+<p>There were also other difficulties encountered:</p><ul>
+<li>Qt Creator would occasionally crash for no reason</li>
+<li>Sometimes, the editor would not create the signals necessary for a window to work (for example, not automatically assigning the Save and Cancel buttons the <code>accept</code> and <code>reject</code> roles)</li>
+<li>The build location wouldn't always be very clear, and sometimes would compile using older versions of <code>ui_&lt;window&gt;.h</code> files rather than the newest versions</li>
 </ul>
-<p>As needed, you can add more modules.</p>
-<h2><a class="anchor" id="autotoc_md16"></a>
-Documentation</h2>
-<p>All header files and functions must be documented using the Doxygen Javadoc format. The README page should include</p><ul>
-<li>A line saying whether this is a basic or challenge level project</li>
-<li>The full names of each team member</li>
-<li>The contribution of each team member</li>
-<li>A UML diagram showing the basic design</li>
-<li>A section detailing issues, including any functionality that is missing</li>
-<li>A section detailing the challenges that you encountered in the project</li>
-<li>Instructions for building the application if anything is required beyond&#160;<em>make</em></li>
+<p>Most of these were simply due to a lack of experience in Qt. However, there was one specific assumption made in the console version that did not work here.</p>
+<p>In the console version, the <code><a class="el" href="classWav.html" title="Class used for representing a WAV file.">Wav</a></code> object always goes out of scope on each "iteration" of the program. Every time the user was asked to load a specific file in the console, a new <code><a class="el" href="classWav.html" title="Class used for representing a WAV file.">Wav</a></code> object would be created. This guaranteed that the object used new memory each time.</p>
+<p>However, it wasn't completely clear how we should do the same thing in the async GUI version. We knew that we should create a new <code><a class="el" href="classWav.html" title="Class used for representing a WAV file.">Wav</a></code> object after the user used a specific processor.</p>
+<p>Initially, we simply tried to call the <code>loadFile()</code> function on the <code><a class="el" href="classWav.html" title="Class used for representing a WAV file.">Wav</a></code> object again. However, this resulted in unintended behavior, like the audio data not being cleared and the header being incorrectly used. If we were to use the gain function on one audio file and then loaded another audio file, then this would actually cause the two audio streams to overlap rather than being overwritten. We ultimately decided that this is how it "should" work - semantically, each <code><a class="el" href="classWav.html" title="Class used for representing a WAV file.">Wav</a></code> object should only ever be tasked with handling one specific file, rather than reusing the same object over and over again.</p>
+<p>So, we decided to internally store a pointer to a <code><a class="el" href="classWav.html" title="Class used for representing a WAV file.">Wav</a></code> object, called <code>active_wav</code>, which would serve as the loaded file for the GUI. Then, the pointer would be changed to a newly allocated <code><a class="el" href="classWav.html" title="Class used for representing a WAV file.">Wav</a></code> object after a processor was run, or after a new file was loaded. However, since the old <code><a class="el" href="classWav.html" title="Class used for representing a WAV file.">Wav</a></code> object never went out of scope (unlike our console version, where a global while loop would cause old objects to go out of scope), this would cause a memory leak. Explicitly calling the destructor of the <code><a class="el" href="classWav.html" title="Class used for representing a WAV file.">Wav</a></code> object appeared to fail, although we were not sure why.</p>
+<p>We created a distinct function for freeing the memory used by a <code><a class="el" href="classWav.html" title="Class used for representing a WAV file.">Wav</a></code> object in the buffer, which appears to have solved the memory leak (according to Task Manager on Windows).</p>
+<p><em>Note: it is entirely possible that an error in memory management remains, but we're not quite sure where or how to fix it.</em></p>
+<h2><a class="anchor" id="autotoc_md15"></a>
+General challenges</h2>
+<ul>
+<li>"**A buffer created with `new` will never return `NULL`**": this caused the program to segfault when we tried to call <code>delete</code> before it had been given any data. This was the cause of the issue in the main menu where an invalid WAV file or invalid filepath would cause the program to crash. We originally set up the destructor to <code>delete</code> the internal buffer if the buffer were not equal to <code>NULL</code>. However, this condition was never false. Since an audio file hadn't been loaded, there was nothing to delete, causing a segfault. This was resolved by adding a flag as to whether there was actually a WAV file loaded or not.</li>
+<li><b>Having to check if a simple change broke every processor</b>: we didn't know how to set up a test suite for the project. We briefly looked into gtest, but decided we could simply check if everything still worked the same. This cost quite a bit of extra time, as there were a few commits that appeared to cause feature regression. Some of these were true regressions that needed to be fixed (and aren't shown in the commit history because they were caught before the commit), while others were actually the result of human error. A testing suite would have saved a lot of time in ensuring changes hadn't broken both the console flow and the individual processors themselves. <br  />
+ </li>
 </ul>
-<p>The Doxygen files should be generated into a folder called&#160;<em>docs.</em></p>
-<h1><a class="anchor" id="autotoc_md17"></a>
-Grading</h1>
-<p>This project will be graded using standard grading with partial credit. There will not be an opportunity for redo, as this project is due toward the end of the semester and there will not be time for redo and grading.</p>
-<p>Grading will be based on</p><ul>
-<li>use of Git</li>
-<li>correct use of C++ features such as templates, inheritance, interfaces, exceptions, and composition</li>
-<li>correctness of the implementation of the required processes</li>
-<li>runtime stability</li>
-</ul>
-<p>See the rubric for details.</p>
-<h1><a class="anchor" id="autotoc_md18"></a>
-What to Turn In</h1>
-<p>All source code must be managed in Github, and the repository URL turned in to WebCampus. Include the team member names and your group number in the submission. </p>
 </div></div><!-- PageDoc -->
 </div><!-- contents -->
 <!-- start footer part -->

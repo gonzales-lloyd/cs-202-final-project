@@ -5,5 +5,5 @@ var searchData=
   ['clamp_9',['clamp',['../classWav.html#aec8ac7b1f037f641fe164cac7b3e734d',1,'Wav']]],
   ['compress_10',['compress',['../classWavManipulation.html#a7c67647940fcf58baaf3679156d8f078',1,'WavManipulation']]],
   ['consoleloop_11',['consoleLoop',['../classMenuLogic.html#ae6b678fb9dd8429a9591f2f4c6fd7251',1,'MenuLogic']]],
-  ['cs_20202_20semester_20project_2c_20f21_12',['CS 202 Semester Project, F21',['../index.html',1,'']]]
+  ['cs_20202_20fall_202021_20final_20project_12',['CS 202 Fall 2021 Final Project',['../index.html',1,'']]]
 ];
